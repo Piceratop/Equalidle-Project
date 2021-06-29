@@ -1,6 +1,9 @@
 {
   "resources": [
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
+    {"id":{"name":"fon_text","path":"fonts/fon_text/fon_text.yy",},"order":0,},
+    {"id":{"name":"spr_box","path":"sprites/spr_box/spr_box.yy",},"order":0,},
+    {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},"order":0,},
+    {"id":{"name":"roo_play","path":"rooms/roo_play/roo_play.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Amazon Fire","path":"options/amazonfire/options_amazonfire.yy",},
@@ -25,7 +28,7 @@
     "children": [],
   },
   "RoomOrder": [
-    {"name":"Room1","path":"rooms/Room1/Room1.yy",},
+    {"name":"roo_play","path":"rooms/roo_play/roo_play.yy",},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
