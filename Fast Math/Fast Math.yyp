@@ -1,7 +1,11 @@
 {
   "resources": [
+    {"id":{"name":"fon_math","path":"fonts/fon_math/fon_math.yy",},"order":1,},
+    {"id":{"name":"string_check","path":"scripts/string_check/string_check.yy",},"order":0,},
+    {"id":{"name":"spr_answer","path":"sprites/spr_answer/spr_answer.yy",},"order":1,},
     {"id":{"name":"fon_text","path":"fonts/fon_text/fon_text.yy",},"order":0,},
     {"id":{"name":"spr_box","path":"sprites/spr_box/spr_box.yy",},"order":0,},
+    {"id":{"name":"reinitialize_variable","path":"scripts/reinitialize_variable/reinitialize_variable.yy",},"order":1,},
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},"order":0,},
     {"id":{"name":"roo_play","path":"rooms/roo_play/roo_play.yy",},"order":0,},
   ],
