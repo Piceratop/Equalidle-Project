@@ -26,10 +26,6 @@ if (text_page < array_length(text) - 1) {
 	showing_text = text[array_length(text) - 1]
 	text_alpha = 1
 	allow = 1
-} else if (wait_time > 0) {
-	wait_time -= 1
-} else {
-	text_alpha = 1	
 }
 
 // User input
@@ -42,13 +38,11 @@ if (keyboard_check_pressed(vk_anykey)) {
 		}
 	}
 	if (keyboard_check(vk_enter) and allow == 1 and submit == 0) {
-		text_alpha = 0
 		if (user_input == sum) {
 			showing_text = correct_ans[irandom_range(0, array_length(correct_ans) - 1)]
 		} else {
 			showing_text = wrong_ans[irandom_range(0, array_length(wrong_ans) - 1)]
 		}
-		wait_time = init_wait_time
 		submit = 1
 	}
 	keyboard_string = ""
