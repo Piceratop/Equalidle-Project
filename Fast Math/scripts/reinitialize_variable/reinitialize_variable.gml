@@ -1,3 +1,0 @@
-function reinitialize_variable(){
-	
-}

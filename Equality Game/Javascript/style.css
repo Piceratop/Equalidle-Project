@@ -1,0 +1,54 @@
+html {
+  background-color: black;
+}
+
+:root {
+  --grid-width: 50vw;
+  --grid-gap: 2vw;
+  --extra-row-margin-top: 5vw;
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    5,
+    calc((var(--grid-width) - 4 * var(--grid-gap)) / 5)
+  );
+  grid-template-rows: repeat(
+    6,
+    calc((var(--grid-width) - 4 * var(--grid-gap)) / 5)
+  );
+  justify-content: center;
+  margin: var(--extra-row-margin-top) auto 0;
+  grid-gap: var(--grid-gap);
+  width: var(--grid-width);
+  height: auto;
+}
+
+#input-row {
+  display: grid;
+  grid-template-columns: repeat(
+    5,
+    calc((var(--grid-width) - 4 * var(--grid-gap)) / 5)
+  );
+  grid-template-rows: repeat(
+    1,
+    calc((var(--grid-width) - 4 * var(--grid-gap)) / 5)
+  );
+  justify-content: center;
+  margin: var(--extra-row-margin-top) auto;
+  grid-gap: var(--grid-gap);
+  width: var(--grid-width);
+  height: auto;
+}
+
+.square {
+  width: 100%;
+  height: 100%;
+  border: 3px solid white;
+  box-sizing: border-box;
+}
+
+.test {
+  background-color: aliceblue;
+}
