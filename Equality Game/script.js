@@ -15,17 +15,9 @@ for (let i = 0; i < numInputRowSquares; i++) {
   inputRowContainer.appendChild(square);
 }
 
-let inputEquality = "";
+// Set up problems
 
-function fillInputRow() {
-  const inputRowSquares = inputRowContainer.querySelectorAll(".square");
-  for (let i = 0; i < inputEquality.length; i++) {
-    inputRowSquares[i].innerHTML = inputEquality[i];
-  }
-  for (let i = inputEquality.length; i < 5; i++) {
-    inputRowSquares[i].innerHTML = "";
-  }
-}
+let inputEquality = "";
 
 const operators = ["+", "-", "*", "/"];
 const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -65,6 +57,8 @@ for (let i = 10; i < 100; i++) {
 const hiddenEquality =
   allValidEqualities[Math.floor(Math.random() * allValidEqualities.length)];
 
+// Setup answer validator
+
 function checkValidAnswer(str) {
   if (!str.includes("=")) {
     return false;
@@ -79,26 +73,20 @@ function checkValidAnswer(str) {
   return false;
 }
 
+let finished = false;
 const grid = [];
+const inputRowSquares = inputRowContainer.querySelectorAll(".square");
+const gridSquares = gridContainer.querySelectorAll(".square");
 
-function fillGrid() {
-  const gridSquares = gridContainer.querySelectorAll(".square");
-  for (let i = 0; i < grid.length; i++) {
-    gridSquares[i].innerHTML = grid[i][0];
-    gridSquares[i].style.backgroundColor = grid[i][1];
-  }
-}
-
-document.addEventListener("keydown", (event) => {
-  const key = event.key;
+function getUserAnswer(key) {
   if (/[\d+\-*/=]/.test(key) && inputEquality.length < 5) {
     inputEquality += key;
   } else if (
-    (key === "Backspace" || key === "Delete") &&
+    (key === "Backspace" || key === "Delete" || key === "Del") &&
     inputEquality.length > 0
   ) {
     inputEquality = inputEquality.slice(0, -1);
-  } else if (key === "Enter") {
+  } else if (key === "Enter" && finished == false) {
     if (checkValidAnswer(inputEquality) && inputEquality.length == 5) {
       const colorCode = ["darkred", "darkred", "darkred", "darkred", "darkred"];
       let secondPassInput = [];
@@ -126,9 +114,53 @@ document.addEventListener("keydown", (event) => {
       for (let i = 0; i < inputEquality.length; i++) {
         grid.push([inputEquality[i], colorCode[i]]);
       }
+      let cg = 0;
+      for (let i = 0; i < colorCode.length; i++) {
+        if (colorCode[i] == "darkgreen") {
+          cg++;
+        }
+      }
+      if (cg == colorCode.length || grid.length >= numSquares) {
+        inputRowContainer.innerHTML = "";
+        finished = true;
+      }
       inputEquality = "";
     }
   }
-  fillGrid();
-  fillInputRow();
+}
+
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+  getUserAnswer(key);
+  if (!finished) {
+    for (let i = 0; i < grid.length; i++) {
+      gridSquares[i].innerHTML = grid[i][0];
+      gridSquares[i].style.backgroundColor = grid[i][1];
+    }
+    for (let i = 0; i < inputEquality.length; i++) {
+      inputRowSquares[i].innerHTML = inputEquality[i];
+    }
+    for (let i = inputEquality.length; i < 5; i++) {
+      inputRowSquares[i].innerHTML = "";
+    }
+  }
+});
+
+document.addEventListener("click", (event) => {
+  let key = event.target.innerHTML.trim();
+  if (event.target.classList.contains("numkey")) {
+    getUserAnswer(key);
+    if (!finished) {
+      for (let i = 0; i < grid.length; i++) {
+        gridSquares[i].innerHTML = grid[i][0];
+        gridSquares[i].style.backgroundColor = grid[i][1];
+      }
+      for (let i = 0; i < inputEquality.length; i++) {
+        inputRowSquares[i].innerHTML = inputEquality[i];
+      }
+      for (let i = inputEquality.length; i < 5; i++) {
+        inputRowSquares[i].innerHTML = "";
+      }
+    }
+  }
 });

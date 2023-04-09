@@ -54,6 +54,49 @@ html {
   align-items: center;
 }
 
-.test {
-  background-color: aliceblue;
+.numkey {
+  width: 100%;
+  height: 100%;
+  border: 3px solid white;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#numpad {
+  display: none;
+  grid-template-columns: repeat(
+    4,
+    calc((var(--grid-width) - 4 * var(--grid-gap)) / 4)
+  );
+  grid-template-rows: repeat(
+    5,
+    calc((var(--grid-width) - 4 * var(--grid-gap)) / 4)
+  );
+  justify-content: center;
+  margin: var(--extra-row-margin-top) auto;
+  grid-gap: var(--grid-gap);
+  width: var(--grid-width);
+  height: auto;
+}
+
+@media only screen and (max-width: 640px) {
+  :root {
+    --grid-width: 90vw;
+  }
+
+  #numpad {
+    display: grid;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --grid-width: 75vw;
+  }
+
+  #numpad {
+    display: grid;
+  }
 }
