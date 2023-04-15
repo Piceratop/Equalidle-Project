@@ -1,12 +1,18 @@
 html {
   background-color: black;
-  font-size: 7.5vw;
+  color: white;
+  font-size: 6vw;
 }
 
 :root {
-  --grid-width: 50vw;
+  --grid-width: 40vw;
   --grid-gap: 2vw;
   --extra-row-margin-top: 5vw;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #grid-container {
@@ -54,9 +60,10 @@ html {
   align-items: center;
 }
 
-.numkey {
+.num-key {
   width: 100%;
   height: 100%;
+  background-color: black;
   border: 3px solid white;
   color: white;
   display: flex;
@@ -65,7 +72,7 @@ html {
 }
 
 #numpad {
-  display: none;
+  display: grid;
   grid-template-columns: repeat(
     4,
     calc((var(--grid-width) - 4 * var(--grid-gap)) / 4)
@@ -86,17 +93,7 @@ html {
     --grid-width: 90vw;
   }
 
-  #numpad {
-    display: grid;
-  }
-}
-
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-  :root {
-    --grid-width: 75vw;
-  }
-
-  #numpad {
-    display: grid;
+  #container {
+    grid-template-columns: 1fr;
   }
 }

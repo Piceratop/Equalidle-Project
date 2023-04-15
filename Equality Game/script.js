@@ -1,3 +1,5 @@
+// Draw the grid
+
 const numSquares = 30;
 const numInputRowSquares = 5;
 const gridContainer = document.getElementById("grid-container");
@@ -15,6 +17,55 @@ for (let i = 0; i < numInputRowSquares; i++) {
   inputRowContainer.appendChild(square);
 }
 
+// Draw the numpad
+
+const numpad = document.getElementById("numpad");
+numpadKeyArray = [
+  "Del",
+  "&divide;",
+  "&times;",
+  "&minus;",
+  "7",
+  "8",
+  "9",
+  "+",
+  "4",
+  "5",
+  "6",
+  "1",
+  "2",
+  "3",
+  "Enter",
+  "0",
+  "=",
+];
+
+for (
+  let numpadKeyIndex = 0;
+  numpadKeyIndex < numpadKeyArray.length;
+  numpadKeyIndex++
+) {
+  const numpadKey = document.createElement("button");
+  numpadKey.classList.add("num-key");
+  numpadKey.innerHTML = numpadKeyArray[numpadKeyIndex];
+  numpad.appendChild(numpadKey);
+  if (numpadKeyIndex == 0) {
+    numpadKey.style.fontSize = "0.5rem";
+  }
+  if (numpadKeyIndex == 7) {
+    numpadKey.style.gridRow = "2 / span 2";
+    numpadKey.style.gridColumn = "4";
+  }
+  if (numpadKeyIndex == 14) {
+    numpadKey.style.gridRow = "4 / span 2";
+    numpadKey.style.gridColumn = "4";
+    numpadKey.style.fontSize = "0.5rem";
+  }
+  if (numpadKeyIndex == 15) {
+    numpadKey.style.gridColumn = "1 / span 2";
+  }
+}
+
 // Set up problems
 
 let inputEquality = "";
@@ -22,12 +73,18 @@ let inputEquality = "";
 const operators = ["+", "-", "*", "/"];
 const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const allCharacters = [...operators, ...digits];
+const allValidCharacters = [...allCharacters, "=", "−", "×", "÷"];
+const keyEquivalent = [
+  ["-", "−"],
+  ["*", "×"],
+  ["/", "÷"],
+];
 let counters = [0, 0, 0, 0];
 const allValidEqualities = [];
 
 while (counters[0] < digits.length) {
-  left_side = digits[counters[0]];
-  right_side =
+  let left_side = digits[counters[0]];
+  let right_side =
     digits[counters[1]] + operators[counters[2]] + digits[counters[3]];
   let digitCounterSet = new Set([0, 1, 3]);
   try {
@@ -50,16 +107,22 @@ while (counters[0] < digits.length) {
   }
 }
 
-for (let i = 10; i < 100; i++) {
-  allValidEqualities.push(i + "=" + i);
-}
-
-const hiddenEquality =
+let hiddenEquality =
   allValidEqualities[Math.floor(Math.random() * allValidEqualities.length)];
+for (let i = 0; i < keyEquivalent.length; i++) {
+  const charToReplace = keyEquivalent[i][0];
+  const replacementChar = keyEquivalent[i][1];
+  hiddenEquality = hiddenEquality.split(charToReplace).join(replacementChar);
+}
 
 // Setup answer validator
 
 function checkValidAnswer(str) {
+  for (let i = 0; i < keyEquivalent.length; i++) {
+    const charToReplace = keyEquivalent[i][1];
+    const replacementChar = keyEquivalent[i][0];
+    str = str.split(charToReplace).join(replacementChar);
+  }
   if (!str.includes("=")) {
     return false;
   }
@@ -78,8 +141,14 @@ const grid = [];
 const inputRowSquares = inputRowContainer.querySelectorAll(".square");
 const gridSquares = gridContainer.querySelectorAll(".square");
 
-function getUserAnswer(key) {
-  if (/[\d+\-*/=]/.test(key) && inputEquality.length < 5) {
+function updateUserAnswer(key) {
+  if (allValidCharacters.includes(key) && inputEquality.length < 5) {
+    for (let i = 0; i < keyEquivalent.length; i++) {
+      if (key == keyEquivalent[i][0]) {
+        key = keyEquivalent[i][1];
+        break;
+      }
+    }
     inputEquality += key;
   } else if (
     (key === "Backspace" || key === "Delete" || key === "Del") &&
@@ -99,6 +168,7 @@ function getUserAnswer(key) {
           secondPassHidden.push(hiddenEquality[i]);
         }
       }
+      // Check for partially correct answers
       while (secondPassInput.length > 0) {
         if (secondPassHidden.includes(secondPassInput[0][1])) {
           colorCode[secondPassInput[0][0]] = "gold";
@@ -111,9 +181,11 @@ function getUserAnswer(key) {
           (element, index) => index !== 0
         );
       }
+      // Add the user's answer and color codes to the input grid
       for (let i = 0; i < inputEquality.length; i++) {
         grid.push([inputEquality[i], colorCode[i]]);
       }
+      // Check if the user has correctly guessed all digits or if the grid is full
       let cg = 0;
       for (let i = 0; i < colorCode.length; i++) {
         if (colorCode[i] == "darkgreen") {
@@ -131,12 +203,12 @@ function getUserAnswer(key) {
 
 document.addEventListener("keydown", (event) => {
   const key = event.key;
-  getUserAnswer(key);
+  updateUserAnswer(key);
+  for (let i = 0; i < grid.length; i++) {
+    gridSquares[i].innerHTML = grid[i][0];
+    gridSquares[i].style.backgroundColor = grid[i][1];
+  }
   if (!finished) {
-    for (let i = 0; i < grid.length; i++) {
-      gridSquares[i].innerHTML = grid[i][0];
-      gridSquares[i].style.backgroundColor = grid[i][1];
-    }
     for (let i = 0; i < inputEquality.length; i++) {
       inputRowSquares[i].innerHTML = inputEquality[i];
     }
@@ -148,13 +220,13 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("click", (event) => {
   let key = event.target.innerHTML.trim();
-  if (event.target.classList.contains("numkey")) {
-    getUserAnswer(key);
+  if (event.target.classList.contains("num-key")) {
+    updateUserAnswer(key);
+    for (let i = 0; i < grid.length; i++) {
+      gridSquares[i].innerHTML = grid[i][0];
+      gridSquares[i].style.backgroundColor = grid[i][1];
+    }
     if (!finished) {
-      for (let i = 0; i < grid.length; i++) {
-        gridSquares[i].innerHTML = grid[i][0];
-        gridSquares[i].style.backgroundColor = grid[i][1];
-      }
       for (let i = 0; i < inputEquality.length; i++) {
         inputRowSquares[i].innerHTML = inputEquality[i];
       }
