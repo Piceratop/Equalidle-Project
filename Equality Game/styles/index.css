@@ -1,4 +1,15 @@
-header {
-  width: 100%;
+main {
+  padding: 1rem;
+}
+
+#container {
+  margin: 0 auto;
+  width: 50%;
   text-align: center;
+}
+
+button {
+  display: inline-block;
+  padding: 0.1rem;
+  font-size: 0.6rem;
 }

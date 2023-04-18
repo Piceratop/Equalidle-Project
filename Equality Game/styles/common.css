@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 html {
-  background-color: black;
+  background: black;
   color: white;
-  font-size: 6vw;
-  font-family: "Open Sans", sans-serif;
+  font: 6vw "Open Sans", sans-serif;
+}
+
+header {
+  width: 100%;
+  border-bottom: 5px solid white;
+  padding: 0.25rem 0;
+  text-align: center;
 }
 
 button {
@@ -15,4 +21,10 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 640px) {
+  header {
+    font-size: 2rem;
+  }
 }

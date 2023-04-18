@@ -3,7 +3,8 @@
 const numSquares = 30;
 const numInputRowSquares = 5;
 const gridContainer = document.getElementById("grid-container");
-const inputRowContainer = document.getElementById("input-row");
+const inputRow = document.getElementById("input-row");
+const answerRow = document.getElementById("answer-row");
 
 for (let i = 0; i < numSquares; i++) {
   const square = document.createElement("div");
@@ -14,7 +15,13 @@ for (let i = 0; i < numSquares; i++) {
 for (let i = 0; i < numInputRowSquares; i++) {
   const square = document.createElement("div");
   square.classList.add("square");
-  inputRowContainer.appendChild(square);
+  inputRow.appendChild(square);
+}
+
+for (let i = 0; i < numInputRowSquares; i++) {
+  const square = document.createElement("div");
+  square.classList.add("square");
+  answerRow.appendChild(square);
 }
 
 // Draw the numpad
@@ -78,15 +85,13 @@ for (
       numpadKey.style.gridColumn = "3 / span 2";
       numpadKey.classList.add("numkey-text");
       numpadKey.addEventListener("click", () => {
-        window.location.reload();
+        window.location.href = "index.html";
       });
       break;
   }
 }
 
 // Set up problems
-
-let inputEquality = "";
 
 const operators = ["+", "-", "*", "/"];
 const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -133,7 +138,11 @@ for (let i = 0; i < keyEquivalent.length; i++) {
   hiddenEquality = hiddenEquality.split(charToReplace).join(replacementChar);
 }
 
+// console.log(hiddenEquality);
+
 // Setup answer validator
+
+let inputEquality = "";
 
 function checkValidAnswer(str) {
   for (let i = 0; i < keyEquivalent.length; i++) {
@@ -156,7 +165,7 @@ function checkValidAnswer(str) {
 
 let finished = false;
 const grid = [];
-const inputRowSquares = inputRowContainer.querySelectorAll(".square");
+const inputRowSquares = inputRow.querySelectorAll(".square");
 const gridSquares = gridContainer.querySelectorAll(".square");
 
 function updateUserAnswer(key) {
@@ -173,7 +182,7 @@ function updateUserAnswer(key) {
     inputEquality.length > 0
   ) {
     inputEquality = inputEquality.slice(0, -1);
-  } else if (key === "Enter" && finished == false) {
+  } else if (key === "Enter") {
     if (checkValidAnswer(inputEquality) && inputEquality.length == 5) {
       const colorCode = ["darkred", "darkred", "darkred", "darkred", "darkred"];
       let secondPassInput = [];
@@ -186,7 +195,6 @@ function updateUserAnswer(key) {
           secondPassHidden.push(hiddenEquality[i]);
         }
       }
-      // Check for partially correct answers
       while (secondPassInput.length > 0) {
         if (secondPassHidden.includes(secondPassInput[0][1])) {
           colorCode[secondPassInput[0][0]] = "gold";
@@ -199,11 +207,9 @@ function updateUserAnswer(key) {
           (element, index) => index !== 0
         );
       }
-      // Add the user's answer and color codes to the input grid
       for (let i = 0; i < inputEquality.length; i++) {
         grid.push([inputEquality[i], colorCode[i]]);
       }
-      // Check if the user has correctly guessed all digits or if the grid is full
       let cg = 0;
       for (let i = 0; i < colorCode.length; i++) {
         if (colorCode[i] == "darkgreen") {
@@ -211,7 +217,7 @@ function updateUserAnswer(key) {
         }
       }
       if (cg == colorCode.length || grid.length >= numSquares) {
-        inputRowContainer.innerHTML = "";
+        inputRow.style.display = "none";
         finished = true;
       }
       inputEquality = "";
@@ -238,13 +244,13 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("click", (event) => {
   let key = event.target.innerHTML.trim();
-  if (event.target.classList.contains("num-key")) {
-    updateUserAnswer(key);
-    for (let i = 0; i < grid.length; i++) {
-      gridSquares[i].innerHTML = grid[i][0];
-      gridSquares[i].style.backgroundColor = grid[i][1];
-    }
+  if (event.target.classList.contains("numkey")) {
     if (!finished) {
+      updateUserAnswer(key);
+      for (let i = 0; i < grid.length; i++) {
+        gridSquares[i].innerHTML = grid[i][0];
+        gridSquares[i].style.backgroundColor = grid[i][1];
+      }
       for (let i = 0; i < inputEquality.length; i++) {
         inputRowSquares[i].innerHTML = inputEquality[i];
       }
