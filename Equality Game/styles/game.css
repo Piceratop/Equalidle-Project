@@ -1,24 +1,7 @@
-html {
-  background-color: black;
-  color: white;
-  font-size: 6vw;
-}
-
 :root {
   --grid-width: 40vw;
   --grid-gap: 2vw;
   --extra-row-margin-top: 5vw;
-}
-
-button {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  border: 3px solid white;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #container {
@@ -86,6 +69,10 @@ button {
   grid-gap: var(--grid-gap);
   width: var(--grid-width);
   height: auto;
+}
+
+.numkey-text {
+  font-size: 0.5rem;
 }
 
 @media only screen and (max-width: 640px) {
