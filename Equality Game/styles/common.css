@@ -25,6 +25,6 @@ button {
 
 @media only screen and (max-width: 640px) {
   header {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 }
