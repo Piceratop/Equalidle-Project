@@ -2,7 +2,7 @@
 
 const numInputRowSquares = 5;
 const numTries = 5;
-const numSquaresnum = numTries * numInputRowSquares;
+const numSquares = numTries * numInputRowSquares;
 const gridContainer = document.getElementById("grid-container");
 const inputRow = document.getElementById("input-row");
 const answerRow = document.getElementById("answer-row");
