@@ -16,7 +16,7 @@
     calc((var(--grid-width) - 4 * var(--grid-gap)) / 5)
   );
   grid-template-rows: repeat(
-    6,
+    5,
     calc((var(--grid-width) - 4 * var(--grid-gap)) / 5)
   );
   justify-content: center;
