@@ -225,7 +225,7 @@ function updateUserAnswer(key) {
         if (cg == colorCode.length) {
           const answerSquares = answerRow.children
           for (let i = 0; i < numInputRowSquares; i++) {
-            answerSquaresanswr.style.backgroundColor = "darkgreen";
+            answerSquares[i].style.backgroundColor = "darkgreen";
           }
         }
         finished = true;
