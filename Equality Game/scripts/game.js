@@ -222,6 +222,11 @@ function updateUserAnswer(key) {
       if (cg == colorCode.length || grid.length >= numSquares) {
         inputRow.style.display = "none";
         answerRow.style.display = "grid";
+        if (cg == colorCode.length) {
+          for (let i = 0; i < numInputRowSquares; i++) {
+            answerRow[i].style.backgroundColor = "darkgreen"
+          }
+        }
         finished = true;
       }
       inputEquality = "";
