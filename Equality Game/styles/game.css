@@ -93,6 +93,10 @@
 }
 
 @media only screen and (max-width: 640px) {
+  header {
+    display: none;
+  }
+  
   :root {
     --grid-width: 90vw;
   }
