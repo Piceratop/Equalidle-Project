@@ -223,8 +223,9 @@ function updateUserAnswer(key) {
         inputRow.style.display = "none";
         answerRow.style.display = "grid";
         if (cg == colorCode.length) {
+          const answerSquares = answerRow.children
           for (let i = 0; i < numInputRowSquares; i++) {
-            console.log(answerRow.children)
+            answerSquaresanswr.style.backgroundColor = "darkgreen";
           }
         }
         finished = true;
