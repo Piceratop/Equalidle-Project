@@ -224,7 +224,7 @@ function updateUserAnswer(key) {
         answerRow.style.display = "grid";
         if (cg == colorCode.length) {
           for (let i = 0; i < numInputRowSquares; i++) {
-            console.log(answerRow[i])
+            console.log(answerRow.children)
           }
         }
         finished = true;
