@@ -18,12 +18,6 @@ for (let i = 0; i < numInputRowSquares; i++) {
   inputRow.appendChild(square);
 }
 
-for (let i = 0; i < numInputRowSquares; i++) {
-  const square = document.createElement("div");
-  square.classList.add("square");
-  answerRow.appendChild(square);
-}
-
 answerRow.style.display = "none"
 
 // Draw the numpad
@@ -138,6 +132,13 @@ for (let i = 0; i < keyEquivalent.length; i++) {
   const charToReplace = keyEquivalent[i][0];
   const replacementChar = keyEquivalent[i][1];
   hiddenEquality = hiddenEquality.split(charToReplace).join(replacementChar);
+}
+
+for (let i = 0; i < numInputRowSquares; i++) {
+  const square = document.createElement("div");
+  square.innerHTML = hiddenEquality[i];
+  square.classList.add("square");
+  answerRow.appendChild(square);
 }
 
 // console.log(hiddenEquality);
