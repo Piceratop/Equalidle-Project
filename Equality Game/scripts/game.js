@@ -1,6 +1,6 @@
 // Draw the grid
 
-const numSquares = 30;
+const numSquares = 25;
 const numInputRowSquares = 5;
 const gridContainer = document.getElementById("grid-container");
 const inputRow = document.getElementById("input-row");
