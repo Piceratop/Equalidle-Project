@@ -24,6 +24,8 @@ for (let i = 0; i < numInputRowSquares; i++) {
   answerRow.appendChild(square);
 }
 
+answerRow.style.display = "none"
+
 // Draw the numpad
 
 const numpad = document.getElementById("numpad");
