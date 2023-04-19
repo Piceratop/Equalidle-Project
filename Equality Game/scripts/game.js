@@ -221,6 +221,7 @@ function updateUserAnswer(key) {
       }
       if (cg == colorCode.length || grid.length >= numSquares) {
         inputRow.style.display = "none";
+        answerRow.style.display = "grid";
         finished = true;
       }
       inputEquality = "";
