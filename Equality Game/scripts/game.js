@@ -224,7 +224,7 @@ function updateUserAnswer(key) {
         answerRow.style.display = "grid";
         if (cg == colorCode.length) {
           for (let i = 0; i < numInputRowSquares; i++) {
-            answerRow[i].style.backgroundColor = "darkgreen"
+            console.log(answerRow[i])
           }
         }
         finished = true;
