@@ -92,6 +92,11 @@
   font-size: 0.5rem;
 }
 
+#navigator {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .numkey-navigator {
   margin: 0.5rem 0;
 }
