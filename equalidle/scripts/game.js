@@ -73,9 +73,12 @@ for (
       break;
     case 17:
       numpadKey.style.gridColumn = "1 / span 2";
+      numpadKey.classList.add("numkey-text");
       break;
     case 18:
       numpadKey.style.gridColumn = "3 / span 2";
+numpadKey.classList.add("numkey-text");
+break;
   }
 }
 
