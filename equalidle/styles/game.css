@@ -99,8 +99,8 @@
 }
 
 .numkey-navigator {
-    height: calc((var(--grid-width) - 4 * var(--grid-gap)) / 5);
-  }
+  height: calc((var(--grid-width) - 4 * var(--grid-gap)) / 5);
+}
 
 @media only screen and (max-width: 640px) {
   header {
