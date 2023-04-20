@@ -74,6 +74,7 @@ for (
     case 17:
       numpadKey.style.gridColumn = "1 / span 2";
       numpadKey.classList.add("numkey-text");
+      numpadKey.classList.add("numkey-navigator");
       numpadKey.addEventListener("click", function () {
         location.reload();
       });
@@ -81,6 +82,7 @@ for (
     case 18:
       numpadKey.style.gridColumn = "3 / span 2";
       numpadKey.classList.add("numkey-text");
+      numpadKey.classList.add("numkey-navigator");
       numpadKey.addEventListener("click", function() {
         window.location.href = "index.html";
       });
