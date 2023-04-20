@@ -196,7 +196,7 @@ function updateUserAnswer(key) {
       }
       while (secondPassInput.length > 0) {
         if (secondPassHidden.includes(secondPassInput[0][1])) {
-          colorCode[secondPassInput[0][0]] = "gold";
+          colorCode[secondPassInput[0][0]] = "goldenrod";
           let firstOccurrence = secondPassHidden.indexOf(secondPassInput[0][1]);
           secondPassHidden = secondPassHidden.filter(
             (element, index) => index !== firstOccurrence
