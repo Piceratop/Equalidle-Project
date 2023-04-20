@@ -71,6 +71,11 @@ for (
     case 15:
       numpadKey.style.gridColumn = "1 / span 2";
       break;
+    case 17:
+      numpadKey.style.gridColumn = "1 / span 2";
+      break;
+    case 18:
+      numpadKey.style.gridColumn = "3 / span 2";
   }
 }
 
