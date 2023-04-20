@@ -92,13 +92,8 @@
   font-size: 0.5rem;
 }
 
-#navigator {
-  display: grid;
-  grid-template-columns: repeat(
-    2,
-    calc((var(--grid-width) - 4 * var(--grid-gap)) / 2)
-  );
-  grid-gap: var(--grid-gap);
+.numkey-navigator {
+  display: none;
 }
 
 @media only screen and (max-width: 640px) {
