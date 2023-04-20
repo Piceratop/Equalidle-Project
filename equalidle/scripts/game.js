@@ -6,6 +6,9 @@ const numSquares = numTries * numInputRowSquares;
 const gridContainer = document.getElementById("grid-container");
 const inputRow = document.getElementById("input-row");
 const answerRow = document.getElementById("answer-row");
+const navigator = document.getElementById("navigator");
+
+navigator.style.display = "none";
 
 for (let i = 0; i < numSquares; i++) {
   const square = document.createElement("div");
@@ -207,6 +210,7 @@ function updateUserAnswer(key) {
       if (cg == colorCode.length || grid.length >= numSquares) {
         inputRow.style.display = "none";
         answerRow.style.display = "grid";
+        navigator.style.display = "grid";
         if (cg == colorCode.length) {
           const answerSquares = answerRow.children;
           for (let i = 0; i < numInputRowSquares; i++) {
