@@ -1,25 +1,19 @@
 // Draw the grid
 
-const numInputRowSquares = 5;
-const numTries = 5;
-const numSquares = numTries * numInputRowSquares;
+const numSquaresPerRow = 5;
 const gridContainer = document.getElementById("grid-container");
 const inputRow = document.getElementById("input-row");
-const answerRow = document.getElementById("answer-row");
 
-for (let i = 0; i < numSquares; i++) {
-  const square = document.createElement("div");
-  square.classList.add("square");
-  gridContainer.appendChild(square);
+function addRowSquares(component) {
+  for (let i = 0; i < numSquaresPerRow; i++) {
+    const square = document.createElement("div");
+    square.classList.add("square");
+    component.appendChild(square);
+  }
 }
 
-for (let i = 0; i < numInputRowSquares; i++) {
-  const square = document.createElement("div");
-  square.classList.add("square");
-  inputRow.appendChild(square);
-}
-
-answerRow.style.display = "none";
+addRowSquares(gridContainer);
+addRowSquares(inputRow);
 
 // Draw the numpad
 
@@ -43,7 +37,7 @@ numpadKeyArray = [
   "0",
   "=",
   "Restart",
-  "Menu"
+  "Menu",
 ];
 
 for (
@@ -83,7 +77,7 @@ for (
       numpadKey.style.gridColumn = "3 / span 2";
       numpadKey.classList.add("numkey-text");
       numpadKey.classList.add("numkey-navigator");
-      numpadKey.addEventListener("click", function() {
+      numpadKey.addEventListener("click", function () {
         window.location.href = "index.html";
       });
       break;
@@ -137,11 +131,10 @@ for (let i = 0; i < keyEquivalent.length; i++) {
   hiddenEquality = hiddenEquality.split(charToReplace).join(replacementChar);
 }
 
-for (let i = 0; i < numInputRowSquares; i++) {
+for (let i = 0; i < numSquaresPerRow; i++) {
   const square = document.createElement("div");
   square.innerHTML = hiddenEquality[i];
   square.classList.add("square");
-  answerRow.appendChild(square);
 }
 
 // console.log(hiddenEquality);
@@ -172,7 +165,7 @@ function checkValidAnswer(str) {
 let finished = false;
 const grid = [];
 const inputRowSquares = inputRow.querySelectorAll(".square");
-const gridSquares = gridContainer.querySelectorAll(".square");
+let gridSquares = gridContainer.querySelectorAll(".square");
 
 function updateUserAnswer(key) {
   if (allValidCharacters.includes(key) && inputEquality.length < 5) {
@@ -216,22 +209,18 @@ function updateUserAnswer(key) {
       for (let i = 0; i < inputEquality.length; i++) {
         grid.push([inputEquality[i], colorCode[i]]);
       }
-      let cg = 0;
-      for (let i = 0; i < colorCode.length; i++) {
-        if (colorCode[i] == "darkgreen") {
-          cg++;
-        }
-      }
-      if (cg == colorCode.length || grid.length >= numSquares) {
+      if (
+        colorCode.filter((color) => color == "darkgreen").length ==
+        colorCode.length
+      ) {
         inputRow.style.display = "none";
-        answerRow.style.display = "grid";
-        if (cg == colorCode.length) {
-          const answerSquares = answerRow.children;
-          for (let i = 0; i < numInputRowSquares; i++) {
-            answerSquares[i].style.backgroundColor = "darkgreen";
-          }
-        }
         finished = true;
+        for (const div of document.querySelectorAll(".numkey-navigator")) {
+          div.style.display = "block";
+        }
+      } else {
+        addRowSquares(gridContainer);
+        gridSquares = gridContainer.querySelectorAll(".square");
       }
       inputEquality = "";
     }
