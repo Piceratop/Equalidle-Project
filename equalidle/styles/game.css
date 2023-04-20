@@ -80,7 +80,7 @@
   grid-template-rows: repeat(
     5,
     calc((var(--grid-width) - 4 * var(--grid-gap)) / 4)
-  ) calc(2 * (var(--grid-width) - 4 * var(--grid-gap)) / 4);
+  );
   justify-content: center;
   margin: var(--extra-row-margin-top) auto;
   grid-gap: var(--grid-gap);
