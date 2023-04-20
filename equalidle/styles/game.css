@@ -98,10 +98,6 @@
   grid-gap: var(--grid-gap);
 }
 
-.numkey-navigator {
-  height: var(--grid-width);
-}
-
 @media only screen and (max-width: 640px) {
   header {
     display: none;
@@ -124,6 +120,6 @@
   }
 
   .numkey-navigator {
-    margin: 1.5rem 0;
+    height: calc((var(--grid-width) - 4 * var(--grid-gap)) / 5);
   }
 }
