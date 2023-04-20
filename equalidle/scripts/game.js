@@ -41,9 +41,7 @@ numpadKeyArray = [
   "3",
   "Enter",
   "0",
-  "=",
-  "Restart",
-  "Menu",
+  "="
 ];
 
 for (
@@ -70,22 +68,6 @@ for (
       break;
     case 15:
       numpadKey.style.gridColumn = "1 / span 2";
-      break;
-    case 17:
-      numpadKey.style.gridColumn = "1 / span 2";
-      numpadKey.classList.add("numkey-text");
-      numpadKey.classList.add("numkey-navigator");
-      numpadKey.addEventListener("click", () => {
-        window.location.reload();
-      });
-      break;
-    case 18:
-      numpadKey.style.gridColumn = "3 / span 2";
-      numpadKey.classList.add("numkey-text");
-      numpadKey.classList.add("numkey-navigator");
-      numpadKey.addEventListener("click", () => {
-        window.location.href = "index.html";
-      });
       break;
   }
 }
