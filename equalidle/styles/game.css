@@ -95,10 +95,11 @@
 #navigator {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: var(--grid-gap);
 }
 
 .numkey-navigator {
-  margin: 0.5rem 0;
+  height: var(--grid-width);
 }
 
 @media only screen and (max-width: 640px) {
