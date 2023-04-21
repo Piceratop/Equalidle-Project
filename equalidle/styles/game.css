@@ -14,25 +14,13 @@
 #grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  justify-content: center;
-  margin: var(--extra-row-margin-top) auto 0;
   grid-gap: var(--grid-gap);
   width: var(--grid-width);
-  height: auto;
+  height: fit-content;
+  margin: var(--extra-row-margin-top) auto;
 }
 
 #input-row {
-  display: grid;
-  grid-template-columns: repeat(5, var(--input-square-size));
-  grid-template-rows: repeat(1, var(--input-square-size));
-  justify-content: center;
-  margin: var(--extra-row-margin-top) auto;
-  grid-gap: var(--grid-gap);
-  width: var(--grid-width);
-  height: auto;
-}
-
-#answer-row {
   display: grid;
   grid-template-columns: repeat(5, var(--input-square-size));
   grid-template-rows: repeat(1, var(--input-square-size));
