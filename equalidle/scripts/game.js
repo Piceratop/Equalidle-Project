@@ -2,11 +2,18 @@
 
 const numSquaresPerRow = 5;
 const gridContainer = document.getElementById("grid-container");
+const delayAnimation = 1;
 
 function addRowSquares(component) {
   for (let i = 0; i < numSquaresPerRow; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
+    const blankSide = document.createElement("div");
+    blankSide.classList.add("blank-side");
+    const digitSide = document.createElement("div");
+    digitSide.classList.add("digit-side");
+    square.appendChild(blankSide);
+    square.appendChild(digitSide);
     component.appendChild(square);
   }
 }
@@ -153,11 +160,24 @@ function checkValidAnswer(str) {
 }
 
 let finished = false;
-const grid = [];
 
 function updateUserAnswer(key) {
-  const gridSquares = gridContainer.querySelectorAll(".square");
-  const inputRowSquares = Array.from(gridSquares).slice(-numSquaresPerRow);
+  const inputRowSquares = Array.from(
+    gridContainer.querySelectorAll(".square")
+  ).slice(-numSquaresPerRow);
+  function modifyInputSquare() {
+    inputRowSquares.forEach((square, i) => {
+      const blankSide = square.querySelector(".blank-side");
+      const digitSide = square.querySelector(".digit-side");
+      if (i < inputEquality.length) {
+        blankSide.innerHTML = inputEquality[i];
+        digitSide.innerHTML = inputEquality[i];
+      } else {
+        blankSide.innerHTML = "";
+        digitSide.innerHTML = "";
+      }
+    });
+  }
   switch (key) {
     case "Backspace":
     case "Delete":
@@ -165,9 +185,11 @@ function updateUserAnswer(key) {
       if (inputEquality.length > 0) {
         inputEquality = inputEquality.slice(0, -1);
       }
+      modifyInputSquare();
       break;
     case "Enter":
       if (checkValidAnswer(inputEquality) && inputEquality.length == 5) {
+        // Handle color Logic
         const colorCode = [
           "darkred",
           "darkred",
@@ -191,15 +213,18 @@ function updateUserAnswer(key) {
             secondPassHidden.splice(secondPassHidden.indexOf(input[1]), 1);
           }
         });
-        for (let i = 0; i < inputEquality.length; i++) {
-          grid.push([inputEquality[i], colorCode[i]]);
+        for (let i = 0; i < numSquaresPerRow; i++) {
+          const square = inputRowSquares[i];
+          const digitSide = square.querySelector(".digit-side");
+          digitSide.style.backgroundColor = colorCode[i];
+          square.classList.add("flipped");
         }
         if (
           colorCode.filter((color) => color == "darkgreen").length ==
           colorCode.length
         ) {
           finished = true;
-          document.querySelectorAll(".numkey-navigator").forEach((div) => {
+          numpad.querySelectorAll(".numkey-navigator").forEach((div) => {
             div.style.display = "block";
           });
         } else {
@@ -216,21 +241,10 @@ function updateUserAnswer(key) {
           }
         }
         inputEquality += key;
+        modifyInputSquare();
       }
       break;
   }
-
-  inputRowSquares.forEach((square, i) => {
-    if (i < inputEquality.length) {
-      square.innerHTML = inputEquality[i];
-    } else {
-      square.innerHTML = "";
-    }
-  });
-  grid.forEach((square, i) => {
-    gridSquares[i].innerHTML = square[0];
-    gridSquares[i].style.backgroundColor = square[1];
-  });
 }
 
 document.addEventListener("keydown", (event) => {

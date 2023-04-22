@@ -4,6 +4,7 @@
   --extra-row-margin-top: 5vw;
   --input-square-size: calc((var(--grid-width) - 4 * var(--grid-gap)) / 5);
   --numpad-size: calc((var(--grid-width) - 4 * var(--grid-gap)) / 4);
+  --flip-delay: 0.5s;
 }
 
 #container {
@@ -32,14 +33,58 @@
 }
 
 .square {
+  position: relative;
   width: var(--input-square-size);
   height: var(--input-square-size);
+  color: white;
+  transform-style: preserve-3d;
+  animation: flip-in var(--flip-delay) ease forwards;
+  animation-delay: var(--flip-delay);
+  opacity: 0;
+}
+
+@keyframes flip-in {
+  from {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.square .blank-side,
+.square .digit-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: 3px solid white;
   box-sizing: border-box;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: transform var(--flip-delay) ease;
+}
+
+.square .blank-side {
+  z-index: 2;
+}
+
+.square .digit-side {
+  transform: rotateY(180deg);
+}
+
+.square.flipped .blank-side {
+  transform: rotateY(180deg);
+}
+
+.square.flipped .digit-side {
+  transform: rotateY(0deg);
 }
 
 #numpad {
