@@ -47,7 +47,7 @@ numpadKeyArray = [
 
 for (
   let numpadKeyIndex = 0;
-  numpadKeyIndex < numpadKeyArray.length;
+  numpadKeyIndex < numpadKeyArray.length - 2;
   numpadKeyIndex++
 ) {
   const numpadKey = document.createElement("button");
