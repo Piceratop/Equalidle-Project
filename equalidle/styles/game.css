@@ -38,7 +38,7 @@
   height: var(--input-square-size);
   color: white;
   transform-style: preserve-3d;
-  animation: flip-in var(--flip-delay) ease forwards;
+  animation: flip-in var(--flip-delay) ease;
   animation-delay: var(--flip-delay);
   opacity: 0;
 }
@@ -96,6 +96,11 @@
   grid-gap: var(--grid-gap);
   width: var(--grid-width);
   height: auto;
+}
+
+.numkey {
+  opacity: 0;
+  animation: flip-in var(--flip-delay) ease;
 }
 
 .numkey-text {
