@@ -229,7 +229,7 @@ const blankSide = square.querySelector(".blank-side");
             div.style.display = "block";
           });
         } else {
-          addRowSquares(gridContainer);
+          addRowSquares(gridContainer, delayAnimation * 2.5);
         }
         inputEquality = "";
       }
