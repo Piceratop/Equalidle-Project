@@ -39,7 +39,6 @@
   color: white;
   transform-style: preserve-3d;
   animation: flip-in var(--flip-delay) ease forwards;
-  animation-delay: var(--flip-delay);
   opacity: 0;
 }
 
