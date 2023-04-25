@@ -4,11 +4,11 @@ const numSquaresPerRow = 5;
 const gridContainer = document.getElementById("grid-container");
 const delayAnimation = 0.75;
 
-function addRowSquares(component) {
+function addRowSquares(component, delayTime) {
   for (let i = 0; i < numSquaresPerRow; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
-    square.style['animationDelay'] = `0.5s`
+    square.style['animationDelay'] = `${delayTime}s`
     const blankSide = document.createElement("div");
     blankSide.classList.add("blank-side");
     const digitSide = document.createElement("div");
@@ -19,7 +19,7 @@ function addRowSquares(component) {
   }
 }
 
-addRowSquares(gridContainer);
+addRowSquares(gridContainer, animationDelay);
 
 // Draw the numpad
 
