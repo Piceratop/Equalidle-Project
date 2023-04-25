@@ -217,7 +217,8 @@ const blankSide = square.querySelector(".blank-side");
           const square = inputRowSquares[i];
           const digitSide = square.querySelector(".digit-side");
           digitSide.style.backgroundColor = colorCode[i];
-          square.classList.add("flipped");
+          setTimeout(() => {square.classList.add("flipped");}, delayAnimation * i * 500)
+          
         }
         if (
           colorCode.filter((color) => color == "darkgreen").length ==
