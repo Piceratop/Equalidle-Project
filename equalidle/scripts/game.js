@@ -19,7 +19,7 @@ function addRowSquares(component, delayTime) {
   }
 }
 
-addRowSquares(gridContainer, animationDelay);
+addRowSquares(gridContainer, delayAnimation);
 
 // Draw the numpad
 
