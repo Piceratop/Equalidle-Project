@@ -8,7 +8,7 @@ function addRowSquares(component) {
   for (let i = 0; i < numSquaresPerRow; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
-    square.style['animationDelay'] = `${delayAnimation * (i + 6) / 2}s`
+    square.style['animationDelay'] = `0.5s`
     const blankSide = document.createElement("div");
     blankSide.classList.add("blank-side");
     const digitSide = document.createElement("div");
