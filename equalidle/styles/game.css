@@ -89,7 +89,7 @@
 #numpad {
   display: grid;
   grid-template-columns: repeat(4, var(--numpad-size));
-  grid-template-rows: repeat(5, var(--numpad-size));
+  grid-template-rows: repeat(6, var(--numpad-size));
   justify-content: center;
   margin: var(--extra-row-margin-top) auto;
   grid-gap: var(--grid-gap);
