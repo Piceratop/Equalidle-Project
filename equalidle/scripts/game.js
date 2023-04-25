@@ -168,7 +168,7 @@ function updateUserAnswer(key) {
   ).slice(-numSquaresPerRow);
   function modifyInputSquare() {
     inputRowSquares.forEach((square, i) => {
-      setTimeout(() => {const blankSide = square.querySelector(".blank-side");
+      const t = setTimeout(() => {const blankSide = square.querySelector(".blank-side");
       const digitSide = square.querySelector(".digit-side");
       if (i < inputEquality.length) {
         blankSide.innerHTML = inputEquality[i];
@@ -176,8 +176,8 @@ function updateUserAnswer(key) {
       } else {
         blankSide.innerHTML = "";
         digitSide.innerHTML = "";
-      }}, delayAnimation * i)
-      
+      }
+      }, delayAnimation * i * 1000)
     });
   }
   switch (key) {
