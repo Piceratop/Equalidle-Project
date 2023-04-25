@@ -3,8 +3,38 @@
   --grid-gap: 2vw;
   --extra-row-margin-top: 5vw;
   --input-square-size: calc((var(--grid-width) - 4 * var(--grid-gap)) / 5);
-  --numpad-size: calc((var(--grid-width) - 4 * var(--grid-gap)) / 4);
-  --flip-delay: 0.75s;
+  --numpad-size: calc((var(--grid-width) - 3 * var(--grid-gap)) / 4);
+  --flip-delay: 0.5s;
+}
+
+@keyframes flip-in-animation {
+  from {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.flip-in {
+  animation: flip-in-animation var(--flip-delay) ease forwards;
+}
+
+@keyframes flip-out-animation {
+  from {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+}
+
+.flip-out {
+  animation: flip-out-animation var(--flip-delay) ease forwards;
 }
 
 #container {
@@ -38,19 +68,8 @@
   height: var(--input-square-size);
   color: white;
   transform-style: preserve-3d;
-  animation: flip-in var(--flip-delay) ease forwards;
+  animation: flip-in-animation var(--flip-delay) ease forwards;
   opacity: 0;
-}
-
-@keyframes flip-in {
-  from {
-    transform: rotateY(-180deg);
-    opacity: 0;
-  }
-  to {
-    transform: rotateY(0deg);
-    opacity: 1;
-  }
 }
 
 .square .blank-side,
@@ -89,25 +108,18 @@
 #numpad {
   display: grid;
   grid-template-columns: repeat(4, var(--numpad-size));
-  grid-template-rows: repeat(6, var(--numpad-size));
-  justify-content: center;
-  margin: var(--extra-row-margin-top) auto;
+  grid-template-rows: repeat(5, var(--numpad-size));
   grid-gap: var(--grid-gap);
+  margin: var(--extra-row-margin-top) auto;
   width: var(--grid-width);
-  height: auto;
 }
 
 .numkey {
   opacity: 0;
-  animation: flip-in var(--flip-delay) ease forwards;
 }
 
 .numkey-text {
   font-size: 0.5rem;
-}
-
-.numkey-navigator {
-  display: none;
 }
 
 @media only screen and (max-width: 640px) {

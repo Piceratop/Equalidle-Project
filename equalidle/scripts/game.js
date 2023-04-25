@@ -2,7 +2,7 @@
 
 const numSquaresPerRow = 5;
 const gridContainer = document.getElementById("grid-container");
-const delayAnimation = 0.5;
+const flipDelayTime = 0.5;
 
 function addRowSquares(component) {
   for (let i = 0; i < numSquaresPerRow; i++) {
@@ -41,8 +41,6 @@ numpadKeyArray = [
   "Enter",
   "0",
   "=",
-  "Restart",
-  "Menu",
 ];
 
 for (
@@ -52,6 +50,7 @@ for (
 ) {
   const numpadKey = document.createElement("button");
   numpadKey.classList.add("numkey");
+  numpadKey.classList.add("flip-in");
   numpadKey.innerHTML = numpadKeyArray[numpadKeyIndex];
   numpad.appendChild(numpadKey);
   switch (numpadKeyIndex) {
@@ -69,22 +68,6 @@ for (
       break;
     case 15:
       numpadKey.style.gridColumn = "1 / span 2";
-      break;
-    case 17:
-      numpadKey.style.gridColumn = "1 / span 2";
-      numpadKey.classList.add("numkey-text");
-      numpadKey.classList.add("numkey-navigator");
-      numpadKey.addEventListener("click", function () {
-        location.reload();
-      });
-      break;
-    case 18:
-      numpadKey.style.gridColumn = "3 / span 2";
-      numpadKey.classList.add("numkey-text");
-      numpadKey.classList.add("numkey-navigator");
-      numpadKey.addEventListener("click", function () {
-        window.location.href = "index.html";
-      });
       break;
   }
 }
@@ -136,8 +119,6 @@ for (let i = 0; i < keyEquivalents.length; i++) {
   hiddenEquality = hiddenEquality.split(charToReplace).join(replacementChar);
 }
 
-// console.log(hiddenEquality);
-
 // Setup answer validator
 
 let inputEquality = "";
@@ -167,7 +148,7 @@ function updateUserAnswer(key) {
   ).slice(-numSquaresPerRow);
   function modifyInputSquare() {
     inputRowSquares.forEach((square, i) => {
-const blankSide = square.querySelector(".blank-side");
+      const blankSide = square.querySelector(".blank-side");
       const digitSide = square.querySelector(".digit-side");
       if (i < inputEquality.length) {
         blankSide.innerHTML = inputEquality[i];
@@ -175,7 +156,8 @@ const blankSide = square.querySelector(".blank-side");
       } else {
         blankSide.innerHTML = "";
         digitSide.innerHTML = "";
-      }    });
+      }
+    });
   }
   switch (key) {
     case "Backspace":
@@ -216,19 +198,53 @@ const blankSide = square.querySelector(".blank-side");
           const square = inputRowSquares[i];
           const digitSide = square.querySelector(".digit-side");
           digitSide.style.backgroundColor = colorCode[i];
-          setTimeout(() => {square.classList.add("flipped");}, delayAnimation * i * 500)
-          
+          setTimeout(() => {
+            square.classList.add("flipped");
+          }, flipDelayTime * i * 500);
         }
         if (
           colorCode.filter((color) => color == "darkgreen").length ==
           colorCode.length
         ) {
           finished = true;
-          numpad.querySelectorAll(".numkey-navigator").forEach((div) => {
-            div.style.display = "block";
-          });
+          setTimeout(() => {
+            numpad.querySelectorAll(".numkey").forEach((numkey) => {
+              numkey.classList.remove("flip-in");
+              numkey.classList.add("flip-out");
+            });
+          }, flipDelayTime * 1500);
+          setTimeout(() => {
+            numpad.innerHTML = "";
+            numpad.style.gridTemplateRows = "var(--numpad-size)";
+            for (let numpadKeyIndex = 0; numpadKeyIndex < 2; numpadKeyIndex++) {
+              const numpadKey = document.createElement("button");
+              numpadKey.classList.add("numkey");
+              numpadKey.classList.add("flip-in");
+              numpad.appendChild(numpadKey);
+              switch (numpadKeyIndex) {
+                case 0:
+                  numpadKey.innerHTML = "Restart";
+                  numpadKey.style.gridColumn = "1 / span 2";
+                  numpadKey.classList.add("numkey-text");
+                  numpadKey.addEventListener("click", function () {
+                    location.reload();
+                  });
+                  break;
+                case 1:
+                  numpadKey.innerHTML = "Menu";
+                  numpadKey.style.gridColumn = "3 / span 2";
+                  numpadKey.classList.add("numkey-text");
+                  numpadKey.addEventListener("click", function () {
+                    window.location.href = "index.html";
+                  });
+                  break;
+              }
+            }
+          }, flipDelayTime * 2000);
         } else {
-          setTimeout(() => {addRowSquares(gridContainer);},delayAnimation * 2500);
+          setTimeout(() => {
+            addRowSquares(gridContainer);
+          }, flipDelayTime * 2500);
         }
         inputEquality = "";
       }
