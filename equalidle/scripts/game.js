@@ -141,6 +141,7 @@ function checkValidAnswer(str) {
 }
 
 let finished = false;
+let lockedPad = false;
 
 function updateUserAnswer(key) {
   const inputRowSquares = Array.from(
@@ -170,6 +171,7 @@ function updateUserAnswer(key) {
       break;
     case "Enter":
       if (checkValidAnswer(inputEquality) && inputEquality.length == 5) {
+        lockedPad = true;
         // Handle color Logic
         const colorCode = [
           "darkred",
@@ -244,6 +246,7 @@ function updateUserAnswer(key) {
         } else {
           setTimeout(() => {
             addRowSquares(gridContainer);
+            lockedPad = false;
           }, flipDelayTime * 2500);
         }
         inputEquality = "";
@@ -265,14 +268,14 @@ function updateUserAnswer(key) {
 
 document.addEventListener("keydown", (event) => {
   const key = event.key;
-  if (!finished) {
+  if (!finished && !lockedPad) {
     updateUserAnswer(key);
   }
 });
 
 document.addEventListener("click", (event) => {
   let key = event.target.innerHTML.trim();
-  if (event.target.classList.contains("numkey") && !finished) {
+  if (event.target.classList.contains("numkey") && !finished && !lockedPad) {
     updateUserAnswer(key);
   }
 });
