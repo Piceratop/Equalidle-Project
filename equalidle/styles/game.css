@@ -4,7 +4,7 @@
   --extra-row-margin-top: 5vw;
   --input-square-size: calc((var(--grid-width) - 4 * var(--grid-gap)) / 5);
   --numpad-size: calc((var(--grid-width) - 4 * var(--grid-gap)) / 4);
-  --flip-delay: 0.5s;
+  --flip-delay: 0.75s;
 }
 
 #container {
