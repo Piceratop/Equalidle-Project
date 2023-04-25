@@ -2,7 +2,7 @@
 
 const numSquaresPerRow = 5;
 const gridContainer = document.getElementById("grid-container");
-const delayAnimation = 0.75;
+const delayAnimation = 0.5;
 
 function addRowSquares(component) {
   for (let i = 0; i < numSquaresPerRow; i++) {
