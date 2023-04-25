@@ -100,7 +100,6 @@
 .numkey {
   opacity: 0;
   animation: flip-in var(--flip-delay) ease forwards;
-  animation-delay: 0;
 }
 
 .numkey-text {
