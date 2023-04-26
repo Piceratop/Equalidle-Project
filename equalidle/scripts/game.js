@@ -84,10 +84,13 @@ const keyEquivalents = [
   ["/", "÷"],
 ];
 
+async function fetchEquation() {
 const getEquationFile = await fetch("equation/fiveCharacterEquations.txt")
 const equationFile = await getEquationFile.text()
 
 console.log(equationFile)
+}
+
 
 
 let counters = [0, 0, 0, 0];
