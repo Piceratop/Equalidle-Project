@@ -27,6 +27,10 @@ button {
   align-items: center;
 }
 
+strong {
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 640px) {
   header {
     font-size: 1.75rem;

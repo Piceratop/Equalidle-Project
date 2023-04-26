@@ -76,8 +76,7 @@ for (
 
 const operators = ["+", "-", "*", "/"];
 const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const allCharacters = [...operators, ...digits];
-const allValidCharacters = [...allCharacters, "=", "−", "×", "÷"];
+const allValidCharacters = [...operators, ...digits, "=", "−", "×", "÷"];
 const keyEquivalents = [
   ["-", "−"],
   ["*", "×"],
@@ -207,10 +206,10 @@ async function main() {
             }, flipDelayTime * 1500);
             setTimeout(() => {
               numpad.innerHTML = "";
-              numpad.style.gridTemplateRows = "var(--numpad-size)";
+              numpad.style.gridTemplateRows = "repeat(2, var(--numpad-size))";
               for (
                 let numpadKeyIndex = 0;
-                numpadKeyIndex < 2;
+                numpadKeyIndex < 3;
                 numpadKeyIndex++
               ) {
                 const numpadKey = document.createElement("button");
@@ -219,6 +218,13 @@ async function main() {
                 numpad.appendChild(numpadKey);
                 switch (numpadKeyIndex) {
                   case 0:
+                    numpadKey.innerHTML = `<div>Congratulations!</div><div>You solved in <strong>${
+                      gridContainer.childElementCount / numSquaresPerRow
+                    }</strong> turns.</div>`;
+                    numpadKey.style.gridColumn = "1 / span 4";
+                    numpadKey.classList.add("numkey-text");
+                    break;
+                  case 1:
                     numpadKey.innerHTML = "Restart";
                     numpadKey.style.gridColumn = "1 / span 2";
                     numpadKey.classList.add("numkey-text");
@@ -226,7 +232,7 @@ async function main() {
                       location.reload();
                     });
                     break;
-                  case 1:
+                  case 2:
                     numpadKey.innerHTML = "Menu";
                     numpadKey.style.gridColumn = "3 / span 2";
                     numpadKey.classList.add("numkey-text");
