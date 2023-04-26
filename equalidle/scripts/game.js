@@ -91,6 +91,7 @@ const equationFile = await getEquationFile.text()
 console.log(equationFile)
 }
 
+fetchEquation();
 
 
 let counters = [0, 0, 0, 0];
