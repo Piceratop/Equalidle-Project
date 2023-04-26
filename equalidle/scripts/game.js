@@ -85,6 +85,7 @@ const keyEquivalents = [
 ];
 
 async function fetchEquation() {
+  await console.log("k");
 const getEquationFile = await fetch("./equation/fiveCharacterEquations.txt");
 const equationFile = await getEquationFile.text();
 
