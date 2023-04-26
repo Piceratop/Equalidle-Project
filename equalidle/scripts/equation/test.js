@@ -3,3 +3,5 @@ async function getFile() {
   const fileContent = await response.text();
   console.log(fileContent)
 }
+
+getFile();
