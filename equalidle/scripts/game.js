@@ -100,7 +100,6 @@ async function main() {
   const allValidEqualities = await fetchEquation();
   let hiddenEquality =
     allValidEqualities[Math.floor(Math.random() * allValidEqualities.length)];
-  hiddenEquality = "0=0=0"
   for (let i = 0; i < keyEquivalents.length; i++) {
     const charToReplace = keyEquivalents[i][0];
     const replacementChar = keyEquivalents[i][1];
