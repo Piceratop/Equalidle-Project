@@ -1,10 +1,9 @@
-
 import re
 
 operators = ["+", "-", "*", "/"]
 digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 allCharacters = digits + operators + ['=']
-counter = [0] * 5
+counter = [0] * 6
 
 
 def extract_numbers(string):
