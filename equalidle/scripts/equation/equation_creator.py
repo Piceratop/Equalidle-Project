@@ -36,7 +36,7 @@ def break_into_expression(equation):
         return False
 
 
-with open('fiveCharacterEquations.txt', 'w') as equationFile:
+with open('sixCharacterEquations.txt', 'w') as equationFile:
     while counter[0] < len(allCharacters):
         currentEquation = ""
         for i in counter:
