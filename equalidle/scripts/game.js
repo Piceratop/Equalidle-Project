@@ -1,8 +1,28 @@
 // Draw the grid
+let numSquaresPerRow;
 
-const numSquaresPerRow = 5;
+const root = document.documentElement;
 const gridContainer = document.getElementById("grid-container");
 const flipDelayTime = 0.5;
+const difficulty = localStorage.getItem("difficulty");
+function setUpInputSquareSize(square) {
+  root.style.setProperty(
+    "--input-square-size",
+    `calc((var(--grid-container-width) - ${
+      square - 1
+    } * var(--grid-gap)) / ${square})`
+  );
+  gridContainer.style.gridTemplateColumns = `repeat(${square}, var(--input-square-size))`;
+  return square;
+}
+switch (difficulty) {
+  case "easy":
+    numSquaresPerRow = setUpInputSquareSize(5);
+    break;
+  case "medium":
+    numSquaresPerRow = setUpInputSquareSize(6);
+    break;
+}
 
 function addRowSquares(component) {
   for (let i = 0; i < numSquaresPerRow; i++) {
@@ -87,7 +107,7 @@ let lockedPad = true;
 
 async function fetchEquation() {
   const getEquationFile = await fetch(
-    "scripts/equation/fiveCharacterEquations.txt"
+    `scripts/equation/${difficulty}Equations.txt`
   );
   const equationFile = await getEquationFile.text();
   lockedPad = false;
@@ -124,6 +144,7 @@ async function main() {
     const expressions = inputEquation.split("=").map((expr) => eval(expr));
     for (let i = 0; i < expressions.length - 1; i++) {
       if (expressions[i] !== expressions[i + 1]) {
+        console.log(expressions[i], expressions[i + 1]);
         return false;
       }
     }
@@ -159,16 +180,16 @@ async function main() {
         modifyInputSquare();
         break;
       case "Enter":
-        if (checkValidAnswer(inputEquality) && inputEquality.length == 5) {
+        if (
+          checkValidAnswer(inputEquality) &&
+          inputEquality.length == numSquaresPerRow
+        ) {
           lockedPad = true;
           // Handle color Logic
-          const colorCode = [
-            "darkred",
-            "darkred",
-            "darkred",
-            "darkred",
-            "darkred",
-          ];
+          const colorCode = [];
+          for (let i = 0; i < numSquaresPerRow; i++) {
+            colorCode.push("darkred");
+          }
           const secondPassInput = [];
           const secondPassHidden = [];
           inputEquality.split("").forEach((char, i) => {
@@ -181,7 +202,7 @@ async function main() {
           });
           secondPassInput.forEach((input, i) => {
             if (secondPassHidden.includes(input[1])) {
-              colorCode[input[0]] = "goldenrod";
+              colorCode[input[0]] = "darkgoldenrod";
               secondPassHidden.splice(secondPassHidden.indexOf(input[1]), 1);
             }
           });
@@ -203,7 +224,7 @@ async function main() {
                 numkey.classList.remove("flip-in");
                 numkey.classList.add("flip-out");
               });
-            }, flipDelayTime * 1500);
+            }, flipDelayTime * 500 * (numSquaresPerRow - 1));
             setTimeout(() => {
               numpad.innerHTML = "";
               numpad.style.gridTemplateRows = "repeat(2, var(--numpad-size))";
@@ -242,18 +263,21 @@ async function main() {
                     break;
                 }
               }
-            }, flipDelayTime * 2000);
+            }, flipDelayTime * 500 * numSquaresPerRow);
           } else {
             setTimeout(() => {
               addRowSquares(gridContainer);
               lockedPad = false;
-            }, flipDelayTime * 2500);
+            }, flipDelayTime * 500 * numSquaresPerRow);
           }
           inputEquality = "";
         }
         break;
       default:
-        if (allValidCharacters.includes(key) && inputEquality.length < 5) {
+        if (
+          allValidCharacters.includes(key) &&
+          inputEquality.length < numSquaresPerRow
+        ) {
           for (let i = 0; i < keyEquivalents.length; i++) {
             if (key == keyEquivalents[i][0]) {
               key = keyEquivalents[i][1];

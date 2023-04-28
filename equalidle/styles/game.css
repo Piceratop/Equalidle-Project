@@ -1,9 +1,9 @@
 :root {
-  --grid-width: 40vw;
-  --grid-gap: 2vw;
+  --grid-container-width: 50vw;
+  --numpad-width: 30vw;
+  --grid-gap: 1vw;
   --extra-row-margin-top: 5vw;
-  --input-square-size: calc((var(--grid-width) - 4 * var(--grid-gap)) / 5);
-  --numpad-size: calc((var(--grid-width) - 3 * var(--grid-gap)) / 4);
+  --numpad-size: calc((var(--numpad-width) - 3 * var(--grid-gap)) / 4);
   --flip-delay: 0.5s;
 }
 
@@ -39,27 +39,16 @@
 
 #container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
 }
 
 #grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: var(--grid-gap);
-  width: var(--grid-width);
+  width: var(--grid-container-width);
   height: fit-content;
   margin: var(--extra-row-margin-top) auto;
-}
-
-#input-row {
-  display: grid;
-  grid-template-columns: repeat(5, var(--input-square-size));
-  grid-template-rows: repeat(1, var(--input-square-size));
-  justify-content: center;
-  margin: var(--extra-row-margin-top) auto;
-  grid-gap: var(--grid-gap);
-  width: var(--grid-width);
-  height: auto;
 }
 
 .square {
@@ -111,7 +100,7 @@
   grid-template-rows: repeat(5, var(--numpad-size));
   grid-gap: var(--grid-gap);
   margin: var(--extra-row-margin-top) auto;
-  width: var(--grid-width);
+  width: var(--numpad-width);
 }
 
 .numkey {
@@ -120,10 +109,11 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
+  font-size: 1rem;
 }
 
 .numkey-text {
-  font-size: 0.5rem;
+  font-size: 0.4rem;
 }
 
 @media only screen and (max-width: 640px) {
@@ -132,7 +122,8 @@
   }
 
   :root {
-    --grid-width: 90vw;
+    --grid-container-width: 90vw;
+    --numpad-width: 90vw;
   }
 
   #container {
