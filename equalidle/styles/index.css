@@ -24,12 +24,13 @@ main {
 button {
   display: inline-block;
   padding: 0.1rem;
+  margin: 0.5rem 0;
   font-size: 0.6rem;
 }
 
 @media only screen and (max-width: 640px) {
   #container {
-    width: 80%;
+    width: 85%;
   }
 
   button,
