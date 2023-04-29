@@ -11,6 +11,7 @@ main {
 button {
   display: inline-block;
   padding: 0.1rem;
+  margin: 0.5rem;
   font-size: 0.6rem;
 }
 
