@@ -33,7 +33,10 @@ button {
     width: 85%;
   }
 
-  button,
+  button {
+    font-size: 0.8rem;
+  }
+
   #difficulty-value {
     font-size: 0.8rem;
   }
