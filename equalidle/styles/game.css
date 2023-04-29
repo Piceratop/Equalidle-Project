@@ -56,6 +56,7 @@
   width: var(--input-square-size);
   height: var(--input-square-size);
   color: white;
+  font-size: var(--digit-font);
   transform-style: preserve-3d;
   animation: flip-in-animation var(--flip-delay) ease forwards;
   opacity: 0;

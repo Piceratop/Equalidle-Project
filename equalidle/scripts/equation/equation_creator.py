@@ -2,7 +2,7 @@ import re
 
 operators = ["+", "-", "*", "/"]
 digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-allCharacters = digits + operators + ['=']
+allCharacters = digits + operators
 counter = [0] * 6
 
 
@@ -36,11 +36,13 @@ def break_into_expression(equation):
         return False
 
 
-with open('mediumEquations.txt', 'w') as equationFile:
+with open('subEquations.txt', 'w') as equationFile:
     while counter[0] < len(allCharacters):
         currentEquation = ""
-        for i in counter:
-            currentEquation += allCharacters[i]
+        for i in range(6):
+            currentEquation += allCharacters[counter[i]]
+            if i == 2:
+                currentEquation += "="
         if extract_numbers(currentEquation) and break_into_expression(currentEquation):
             equationFile.write(f"{currentEquation}\n")
         for i in range(len(counter)-1, -1, -1):

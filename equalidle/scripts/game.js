@@ -1,10 +1,10 @@
 // Draw the grid
-let numSquaresPerRow;
 
 const root = document.documentElement;
 const gridContainer = document.getElementById("grid-container");
 const flipDelayTime = 0.5;
 const difficulty = localStorage.getItem("difficulty");
+const numSquaresPerRow = setUpInputSquareSize(difficulty);
 function setUpInputSquareSize(square) {
   root.style.setProperty(
     "--input-square-size",
@@ -12,16 +12,9 @@ function setUpInputSquareSize(square) {
       square - 1
     } * var(--grid-gap)) / ${square})`
   );
+  root.style.setProperty("--digit-font", `${2.5 - square * 0.25}rem`);
   gridContainer.style.gridTemplateColumns = `repeat(${square}, var(--input-square-size))`;
   return square;
-}
-switch (difficulty) {
-  case "easy":
-    numSquaresPerRow = setUpInputSquareSize(5);
-    break;
-  case "medium":
-    numSquaresPerRow = setUpInputSquareSize(6);
-    break;
 }
 
 function addRowSquares(component) {

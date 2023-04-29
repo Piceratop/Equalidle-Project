@@ -12,9 +12,18 @@
     <header>Equalidle</header>
     <main>
       <div id="container">
-        <button class="game-nav" id="easy">Easy</button>
-        <button class="game-nav" id="medium">Medium</button>
-        <!-- <button class="game-nav" id="hard">Hard</button> -->
+        <div id="play-container">
+          <p id="difficulty-value">Number of Characters: 5</p>
+          <input
+            type="range"
+            min="5"
+            max="7"
+            value="5"
+            step="1"
+            id="difficulty-slider"
+          />
+          <button id="play">Play</button>
+        </div>
       </div>
     </main>
   </body>
