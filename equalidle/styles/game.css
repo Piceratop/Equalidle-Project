@@ -129,20 +129,24 @@
 }
 
 #numpad {
+  position: sticky;
   display: grid;
-  grid-template-columns: repeat(4, var(--numpad-size));
-  grid-template-rows: repeat(5, var(--numpad-size));
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-gap: var(--grid-gap);
   margin: var(--extra-row-margin-top) auto;
   width: var(--numpad-width);
+  height: fit-content;
 }
 
 .numkey {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0;
+  display: flex;
+  width: var(--numpad-size);
+  height: var(--numpad-size);
   font-size: 1rem;
 }
 
@@ -172,4 +176,3 @@
     font-size: 1rem;
   }
 }
-

@@ -73,14 +73,17 @@ for (
     case 7:
       numpadKey.style.gridRow = "2 / span 2";
       numpadKey.style.gridColumn = "4";
+      numpadKey.style.height = "100%";
       break;
     case 14:
+      numpadKey.classList.add("numkey-text");
       numpadKey.style.gridRow = "4 / span 2";
       numpadKey.style.gridColumn = "4";
-      numpadKey.classList.add("numkey-text");
+      numpadKey.style.height = "100%";
       break;
     case 15:
       numpadKey.style.gridColumn = "1 / span 2";
+      numpadKey.style.width = "100%";
       break;
   }
 }
