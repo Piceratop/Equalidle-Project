@@ -1,4 +1,4 @@
-# Equalidle-Project
+# Equalidle Project
 
 ## Description
 
