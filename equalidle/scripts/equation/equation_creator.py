@@ -3,7 +3,6 @@ import re
 operators = ["+", "-", "*", "/"]
 digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 allCharacters = digits + operators
-counter = [0] * 6
 
 
 def extract_numbers(string):
@@ -37,17 +36,22 @@ def break_into_expression(equation):
 
 
 with open('subEquations.txt', 'w') as equationFile:
-    while counter[0] < len(allCharacters):
-        currentEquation = ""
-        for i in range(6):
-            currentEquation += allCharacters[counter[i]]
-            if i == 2:
-                currentEquation += "="
-        if extract_numbers(currentEquation) and break_into_expression(currentEquation):
-            equationFile.write(f"{currentEquation}\n")
-        for i in range(len(counter)-1, -1, -1):
-            counter[i] += 1
-            if counter[i] < len(allCharacters):
-                break
-            if i:
-                counter[i] = 0
+    for k in range(5):
+        for j in range(k + 1, 5):
+            counter = [0] * 5
+            while counter[0] < len(allCharacters):
+                currentEquation = ""
+                for i in range(len(counter)):
+                    currentEquation += allCharacters[counter[i]]
+                    if i == k:
+                        currentEquation += "="
+                    if i == j:
+                        currentEquation += "="
+                if extract_numbers(currentEquation) and break_into_expression(currentEquation):
+                    equationFile.write(f"{currentEquation}\n")
+                for i in range(len(counter)-1, -1, -1):
+                    counter[i] += 1
+                    if counter[i] < len(allCharacters):
+                        break
+                    if i:
+                        counter[i] = 0
