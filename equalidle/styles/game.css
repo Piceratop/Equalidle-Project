@@ -140,12 +140,12 @@
 }
 
 .numkey {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  display: flex;
-  width: var(--numpad-size);
+  width: 100%;
   height: var(--numpad-size);
   font-size: 1rem;
 }
