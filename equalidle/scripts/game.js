@@ -223,7 +223,7 @@ async function main() {
             }, flipDelayTime * 500 * (numSquaresPerRow - 1));
             setTimeout(() => {
               numpad.innerHTML = "";
-              numpad.style.gridTemplateRows = "repeat(2, var(--numpad-size))";
+              numpad.style.gridTemplateRows = "repeat(2, 1fr)";
               for (
                 let numpadKeyIndex = 0;
                 numpadKeyIndex < 3;
@@ -239,11 +239,13 @@ async function main() {
                       gridContainer.childElementCount / numSquaresPerRow
                     }</strong> turns.</div>`;
                     numpadKey.style.gridColumn = "1 / span 4";
+                    numpadKey.style.width = "100%";
                     numpadKey.classList.add("numkey-text");
                     break;
                   case 1:
                     numpadKey.innerHTML = "Restart";
                     numpadKey.style.gridColumn = "1 / span 2";
+                    numpadKey.style.width = "100%";
                     numpadKey.classList.add("numkey-text");
                     numpadKey.addEventListener("click", function () {
                       location.reload();
@@ -252,6 +254,7 @@ async function main() {
                   case 2:
                     numpadKey.innerHTML = "Menu";
                     numpadKey.style.gridColumn = "3 / span 2";
+                    numpadKey.style.width = "100%";
                     numpadKey.classList.add("numkey-text");
                     numpadKey.addEventListener("click", function () {
                       window.location.href = "index.html";
