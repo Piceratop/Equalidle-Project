@@ -3,7 +3,7 @@
   --numpad-width: 30vw;
   --grid-gap: 1vw;
   --extra-row-margin-top: 5vw;
-  --numpad-size: calc((var(--numpad-width) - 3 * var(--grid-gap)) / 4);
+  --numpad-size: calc((var(--numpad-width) - 4 * var(--grid-gap)) / 4);
   --flip-delay: 0.5s;
 }
 
