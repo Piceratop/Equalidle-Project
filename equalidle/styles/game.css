@@ -145,8 +145,8 @@
 }
 
 .numkey {
-  height: var(--numkey-size);
-  width: var(--numkey-size);
+  /* height: var(--numkey-size);
+  width: var(--numkey-size); */
   border: 3px solid white;
   display: flex;
   justify-content: center;
@@ -156,7 +156,7 @@
 .numkey-text {
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 1023px) {
   header {
     display: none;
   }
@@ -170,6 +170,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  #numpad-container,
+  #numpad {
+    position: static;
   }
 
   .numkey {
