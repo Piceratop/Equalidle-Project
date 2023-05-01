@@ -35,58 +35,58 @@ addRowSquares(gridContainer);
 
 // Draw the numpad
 
-const numpad = document.getElementById("numpad");
-numpadKeyArray = [
-  "Del",
-  "&divide;",
-  "&times;",
-  "&minus;",
-  "7",
-  "8",
-  "9",
-  "+",
-  "4",
-  "5",
-  "6",
-  "1",
-  "2",
-  "3",
-  "Enter",
-  "0",
-  "=",
-];
+// const numpad = document.getElementById("numpad");
+// numpadKeyArray = [
+//   "Del",
+//   "&divide;",
+//   "&times;",
+//   "&minus;",
+//   "7",
+//   "8",
+//   "9",
+//   "+",
+//   "4",
+//   "5",
+//   "6",
+//   "1",
+//   "2",
+//   "3",
+//   "Enter",
+//   "0",
+//   "=",
+// ];
 
-for (
-  let numpadKeyIndex = 0;
-  numpadKeyIndex < numpadKeyArray.length;
-  numpadKeyIndex++
-) {
-  const numpadKey = document.createElement("button");
-  numpadKey.classList.add("numkey");
-  numpadKey.classList.add("flip-in");
-  numpadKey.innerHTML = numpadKeyArray[numpadKeyIndex];
-  numpad.appendChild(numpadKey);
-  switch (numpadKeyIndex) {
-    case 0:
-      numpadKey.classList.add("numkey-text");
-      break;
-    case 7:
-      numpadKey.style.gridRow = "2 / span 2";
-      numpadKey.style.gridColumn = "4";
-      numpadKey.style.height = "100%";
-      break;
-    case 14:
-      numpadKey.classList.add("numkey-text");
-      numpadKey.style.gridRow = "4 / span 2";
-      numpadKey.style.gridColumn = "4";
-      numpadKey.style.height = "100%";
-      break;
-    case 15:
-      numpadKey.style.gridColumn = "1 / span 2";
-      numpadKey.style.width = "100%";
-      break;
-  }
-}
+// for (
+//   let numpadKeyIndex = 0;
+//   numpadKeyIndex < numpadKeyArray.length;
+//   numpadKeyIndex++
+// ) {
+//   const numpadKey = document.createElement("button");
+//   numpadKey.classList.add("numkey");
+//   numpadKey.classList.add("flip-in");
+//   numpadKey.innerHTML = numpadKeyArray[numpadKeyIndex];
+//   numpad.appendChild(numpadKey);
+//   switch (numpadKeyIndex) {
+//     case 0:
+//       numpadKey.classList.add("numkey-text");
+//       break;
+//     case 7:
+//       numpadKey.style.gridRow = "2 / span 2";
+//       numpadKey.style.gridColumn = "4";
+//       numpadKey.style.height = "100%";
+//       break;
+//     case 14:
+//       numpadKey.classList.add("numkey-text");
+//       numpadKey.style.gridRow = "4 / span 2";
+//       numpadKey.style.gridColumn = "4";
+//       numpadKey.style.height = "100%";
+//       break;
+//     case 15:
+//       numpadKey.style.gridColumn = "1 / span 2";
+//       numpadKey.style.width = "100%";
+//       break;
+//   }
+// }
 
 // All valid characters
 
