@@ -41,8 +41,8 @@ function resizeNumkey() {
     numkey.style.height = `${width}px`;
   });
 }
-resizeNumkey();
-window.addEventListener("resize", resizeNumkey);
+// resizeNumkey();
+// window.addEventListener("resize", resizeNumkey);
 
 // All valid characters
 
