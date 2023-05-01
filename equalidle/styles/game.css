@@ -65,8 +65,7 @@
 }
 
 #container {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
+  display: flex;
 }
 
 #grid-container {
@@ -140,11 +139,10 @@
 
 .numkey {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  width: 50px;
+  width: 50px !important;
   height: 50px;
   font-size: 1rem;
 }
@@ -164,7 +162,8 @@
   }
 
   #container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 
   .numkey {
