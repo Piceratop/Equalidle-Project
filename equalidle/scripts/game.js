@@ -44,6 +44,13 @@ function resizeNumkey() {
         numkey.style.gridRow = "2 / span 2";
         numkey.style.gridColumn = "4 / span 1";
         break;
+      case "Enter":
+        numkey.style.gridRow = "4 / span 2";
+        numkey.style.gridColumn = "4 / span 1";
+        break;
+      case "0":
+        numkey.style.gridColumn = "1 / span 2";
+        break;
       default:
         numkey.style.height = `${numkey.offsetWidth}px`;
         break;
