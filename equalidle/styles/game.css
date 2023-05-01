@@ -67,6 +67,7 @@
 
 #container {
   display: flex;
+  justify-content: baseline;
 }
 
 #grid-container {
@@ -128,10 +129,18 @@
 }
 
 #numpad-container {
+  position: relative;
+  width: var(--numpad-container-width);
+}
+
+#numpad {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: var(--grid-gap);
-  width: var(--numpad-container-width);
+  width: 100%;
   height: fit-content;
 }
 
@@ -157,6 +166,7 @@
   #container {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .numkey {
