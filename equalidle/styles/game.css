@@ -127,13 +127,7 @@
 }
 
 #numpad {
-  position: sticky;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-gap: var(--grid-gap);
-  margin: var(--extra-row-margin-top) auto;
-  width: fit-content;
+  width: 100%;
   height: fit-content;
 }
 
