@@ -34,6 +34,16 @@ function addRowSquares(component) {
 
 addRowSquares(gridContainer);
 
+function resizeNumkey() {
+  const numkeys = document.querySelectorAll("#numpad .numkey");
+  numkeys.forEach((numkey) => {
+    const width = numkey.offsetWidth;
+    numkey.style.height = `${width}px`;
+  });
+}
+resizeNumkey();
+window.addEventListener("resize", resizeNumkey);
+
 // All valid characters
 
 const operators = ["+", "-", "*", "/"];

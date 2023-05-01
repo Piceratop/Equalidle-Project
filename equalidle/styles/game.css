@@ -145,12 +145,11 @@
 }
 
 .numkey {
-  /* height: var(--numkey-size);
-  width: var(--numkey-size); */
   border: 3px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
 .numkey-text {
@@ -162,8 +161,8 @@
   }
 
   :root {
-    --grid-container-width: 90vw;
-    --numpad-container-width: 90vw;
+    --grid-container-width: 85vw;
+    --numpad-container-width: 85vw;
   }
 
   #container {
@@ -178,7 +177,7 @@
   }
 
   .numkey {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .numkey-text {
