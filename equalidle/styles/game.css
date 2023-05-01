@@ -1,6 +1,8 @@
 :root {
   --grid-container-width: 50vw;
+  --numpad-container-width: 30vw;
   --grid-gap: 1vw;
+  --numkey-size: calc(var(--numpad-container-width) / 4 - var(--grid-gap));
   --extra-row-margin-top: 5vw;
   --flip-delay: 0.5s;
 }
@@ -125,12 +127,18 @@
   transform: rotateY(0deg);
 }
 
-#numpad {
-  width: 100%;
+#numpad-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: var(--grid-gap);
+  width: var(--numpad-container-width);
   height: fit-content;
 }
 
 .numkey {
+  height: var(--numkey-size);
+  width: var(--numkey-size);
+  border: 3px solid white;
 }
 
 .numkey-text {
@@ -143,6 +151,7 @@
 
   :root {
     --grid-container-width: 90vw;
+    --numpad-container-width: 90vw;
   }
 
   #container {

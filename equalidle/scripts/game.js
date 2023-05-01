@@ -4,7 +4,7 @@ const root = document.documentElement;
 const gridContainer = document.getElementById("grid-container");
 const flipDelayTime = 0.5;
 const difficulty = localStorage.getItem("difficulty");
-const numSquaresPerRow = setUpInputSquareSize(difficulty);
+
 function setUpInputSquareSize(square) {
   root.style.setProperty(
     "--input-square-size",
@@ -16,6 +16,7 @@ function setUpInputSquareSize(square) {
   gridContainer.style.gridTemplateColumns = `repeat(${square}, var(--input-square-size))`;
   return square;
 }
+const numSquaresPerRow = setUpInputSquareSize(difficulty);
 
 function addRowSquares(component) {
   for (let i = 0; i < numSquaresPerRow; i++) {
@@ -32,61 +33,6 @@ function addRowSquares(component) {
 }
 
 addRowSquares(gridContainer);
-
-// Draw the numpad
-
-// const numpad = document.getElementById("numpad");
-// numpadKeyArray = [
-//   "Del",
-//   "&divide;",
-//   "&times;",
-//   "&minus;",
-//   "7",
-//   "8",
-//   "9",
-//   "+",
-//   "4",
-//   "5",
-//   "6",
-//   "1",
-//   "2",
-//   "3",
-//   "Enter",
-//   "0",
-//   "=",
-// ];
-
-// for (
-//   let numpadKeyIndex = 0;
-//   numpadKeyIndex < numpadKeyArray.length;
-//   numpadKeyIndex++
-// ) {
-//   const numpadKey = document.createElement("button");
-//   numpadKey.classList.add("numkey");
-//   numpadKey.classList.add("flip-in");
-//   numpadKey.innerHTML = numpadKeyArray[numpadKeyIndex];
-//   numpad.appendChild(numpadKey);
-//   switch (numpadKeyIndex) {
-//     case 0:
-//       numpadKey.classList.add("numkey-text");
-//       break;
-//     case 7:
-//       numpadKey.style.gridRow = "2 / span 2";
-//       numpadKey.style.gridColumn = "4";
-//       numpadKey.style.height = "100%";
-//       break;
-//     case 14:
-//       numpadKey.classList.add("numkey-text");
-//       numpadKey.style.gridRow = "4 / span 2";
-//       numpadKey.style.gridColumn = "4";
-//       numpadKey.style.height = "100%";
-//       break;
-//     case 15:
-//       numpadKey.style.gridColumn = "1 / span 2";
-//       numpadKey.style.width = "100%";
-//       break;
-//   }
-// }
 
 // All valid characters
 
