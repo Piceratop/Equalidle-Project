@@ -34,10 +34,10 @@ function addRowSquares(component) {
 
 addRowSquares(gridContainer);
 
-const numpad = document.getElementById("#numpad");
+const numpad = document.getElementById("numpad");
+const numkeys = numpad.querySelectorAll(".numkey");
 
 function resizeNumkey() {
-  const numkeys = document.querySelectorAll("#numpad .numkey");
   numkeys.forEach((numkey) => {
     switch (numkey.innerHTML) {
       case "+":
@@ -47,9 +47,6 @@ function resizeNumkey() {
       case "Enter":
         numkey.style.gridRow = "4 / span 2";
         numkey.style.gridColumn = "4 / span 1";
-        break;
-      case "0":
-        numkey.style.gridColumn = "1 / span 2";
         break;
       default:
         numkey.style.height = `${numkey.offsetWidth}px`;
@@ -112,7 +109,6 @@ async function main() {
     const expressions = inputEquation.split("=").map((expr) => eval(expr));
     for (let i = 0; i < expressions.length - 1; i++) {
       if (expressions[i] !== expressions[i + 1]) {
-        console.log(expressions[i], expressions[i + 1]);
         return false;
       }
     }
@@ -188,7 +184,7 @@ async function main() {
           ) {
             finished = true;
             setTimeout(() => {
-              numpad.querySelectorAll(".numkey").forEach((numkey) => {
+              numkeys.forEach((numkey) => {
                 numkey.classList.remove("flip-in");
                 numkey.classList.add("flip-out");
               });
@@ -203,7 +199,9 @@ async function main() {
               ) {
                 const numpadKey = document.createElement("button");
                 numpadKey.classList.add("numkey");
+                numpadKey.classList.add("numkey-text");
                 numpadKey.classList.add("flip-in");
+                numpadKey.style.padding = "0.2rem 0";
                 numpad.appendChild(numpadKey);
                 switch (numpadKeyIndex) {
                   case 0:
@@ -212,13 +210,11 @@ async function main() {
                     }</strong> turns.</div>`;
                     numpadKey.style.gridColumn = "1 / span 4";
                     numpadKey.style.width = "100%";
-                    numpadKey.classList.add("numkey-text");
                     break;
                   case 1:
                     numpadKey.innerHTML = "Restart";
                     numpadKey.style.gridColumn = "1 / span 2";
                     numpadKey.style.width = "100%";
-                    numpadKey.classList.add("numkey-text");
                     numpadKey.addEventListener("click", function () {
                       location.reload();
                     });
@@ -227,7 +223,6 @@ async function main() {
                     numpadKey.innerHTML = "Menu";
                     numpadKey.style.gridColumn = "3 / span 2";
                     numpadKey.style.width = "100%";
-                    numpadKey.classList.add("numkey-text");
                     numpadKey.addEventListener("click", function () {
                       window.location.href = "index.html";
                     });

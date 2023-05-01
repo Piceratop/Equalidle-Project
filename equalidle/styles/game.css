@@ -66,8 +66,8 @@
 }
 
 #container {
-  display: flex;
-  justify-content: baseline;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
 }
 
 #grid-container {
@@ -95,7 +95,7 @@
 .square .blank-side,
 .square .digit-side {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -129,34 +129,34 @@
 }
 
 #numpad-container {
-  position: relative;
   width: var(--numpad-container-width);
 }
 
 #numpad {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--grid-gap);
   width: 100%;
   height: fit-content;
+  padding: var(--extra-row-margin-top) 1rem;
 }
 
 .numkey {
   height: 100%;
   border: 3px solid white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0;
+  font-size: 0.8rem;
 }
 
 .numkey-text {
+  font-size: 0.3rem;
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 628px) {
   header {
     display: none;
   }
