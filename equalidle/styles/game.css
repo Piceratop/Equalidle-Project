@@ -73,7 +73,7 @@
 #grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: var(--grid-gap);
+  gap: var(--grid-gap);
   width: var(--grid-container-width);
   height: fit-content;
   margin: var(--extra-row-margin-top) auto;
@@ -139,7 +139,7 @@
   left: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--grid-gap);
+  gap: var(--grid-gap);
   width: 100%;
   height: fit-content;
 }

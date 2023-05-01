@@ -34,6 +34,12 @@ function addRowSquares(component) {
 
 addRowSquares(gridContainer);
 
+const numpad = document.getElementById("#numpad");
+const isApple = /iPad|iPhone|iPod|Mac|Macintosh/.test(navigator.userAgent);
+if (isApple) {
+  numpad.style.gap = "0";
+}
+
 function resizeNumkey() {
   const numkeys = document.querySelectorAll("#numpad .numkey");
   numkeys.forEach((numkey) => {
@@ -49,7 +55,7 @@ function resizeNumkey() {
   });
 }
 resizeNumkey();
-// window.addEventListener("resize", resizeNumkey);
+window.addEventListener("resize", resizeNumkey);
 
 // All valid characters
 
