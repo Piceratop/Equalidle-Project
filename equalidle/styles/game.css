@@ -135,14 +135,12 @@
 #numpad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--grid-gap);
   width: 100%;
   height: fit-content;
   padding: var(--extra-row-margin-top) 1rem;
 }
 
 .numkey {
-  height: 100%;
   border: 3px solid white;
   display: flex;
   flex-direction: column;
