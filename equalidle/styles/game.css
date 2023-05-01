@@ -1,9 +1,8 @@
 :root {
   --grid-container-width: 50vw;
-  --numpad-width: 30vw;
   --grid-gap: 1vw;
   --extra-row-margin-top: 5vw;
-  --numpad-size: calc((var(--numpad-width) - 3 * var(--grid-gap)) / 4);
+  --numpad-size: 50px;
   --flip-delay: 0.5s;
 }
 
@@ -131,11 +130,11 @@
 #numpad {
   position: sticky;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-gap: var(--grid-gap);
   margin: var(--extra-row-margin-top) auto;
-  width: var(--numpad-width);
+  width: fit-content;
   height: fit-content;
 }
 
@@ -145,8 +144,8 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
-  width: var(--numpad-size);
-  height: var(--numpad-size);
+  width: 50px;
+  height: 50px;
   font-size: 1rem;
 }
 
