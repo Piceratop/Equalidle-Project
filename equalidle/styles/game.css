@@ -148,6 +148,9 @@
   height: var(--numkey-size);
   width: var(--numkey-size);
   border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .numkey-text {
