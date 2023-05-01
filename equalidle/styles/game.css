@@ -142,7 +142,6 @@
 }
 
 .numkey {
-  height: 100%;
   border: 3px solid white;
   display: flex;
   flex-direction: column;
