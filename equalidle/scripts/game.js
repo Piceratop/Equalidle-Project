@@ -35,10 +35,6 @@ function addRowSquares(component) {
 addRowSquares(gridContainer);
 
 const numpad = document.getElementById("#numpad");
-const isApple = /iPad|iPhone|iPod|Mac|Macintosh/.test(navigator.userAgent);
-if (isApple) {
-  numpad.style.gap = "0";
-}
 
 function resizeNumkey() {
   const numkeys = document.querySelectorAll("#numpad .numkey");
