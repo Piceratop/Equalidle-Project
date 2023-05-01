@@ -145,6 +145,7 @@
 }
 
 .numkey {
+  height: 100%;
   border: 3px solid white;
   display: flex;
   justify-content: center;

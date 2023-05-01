@@ -37,11 +37,18 @@ addRowSquares(gridContainer);
 function resizeNumkey() {
   const numkeys = document.querySelectorAll("#numpad .numkey");
   numkeys.forEach((numkey) => {
-    const width = numkey.offsetWidth;
-    numkey.style.height = `${width}px`;
+    switch (numkey.innerHTML) {
+      case "+":
+        numkey.style.gridRow = "2 / span 2";
+        numkey.style.gridColumn = "4 / span 1";
+        break;
+      default:
+        numkey.style.height = `${numkey.offsetWidth}px`;
+        break;
+    }
   });
 }
-// resizeNumkey();
+resizeNumkey();
 // window.addEventListener("resize", resizeNumkey);
 
 // All valid characters
