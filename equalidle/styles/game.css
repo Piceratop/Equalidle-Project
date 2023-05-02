@@ -1,10 +1,9 @@
 :root {
   --grid-container-width: 50vw;
   --numpad-container-width: 30vw;
-  --grid-gap: 1vw;
+  --grid-gap: 3px;
   --numkey-size: calc(var(--numpad-container-width) / 4 - var(--grid-gap));
   --extra-row-margin-top: 5vw;
-  --flip-delay: 0.5s;
 }
 
 @-webkit-keyframes flip-in-animation {

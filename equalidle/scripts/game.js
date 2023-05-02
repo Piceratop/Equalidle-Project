@@ -2,8 +2,11 @@
 
 const root = document.documentElement;
 const gridContainer = document.getElementById("grid-container");
-const flipDelayTime = 0.5;
+const flipDelayTime = 0.75;
+root.style.setProperty("--flip-delay", `${flipDelayTime}s`);
 const difficulty = localStorage.getItem("difficulty");
+let lockedPad = true;
+let finished = false;
 
 function setUpInputSquareSize(square) {
   root.style.setProperty(
@@ -38,6 +41,10 @@ const numpad = document.getElementById("numpad");
 const numkeys = numpad.querySelectorAll(".numkey");
 
 function resizeNumkey() {
+  let numkeySize = numkeys[0].offsetWidth;
+  if (finished) {
+    numkeySize = numkeySize / 4;
+  }
   numkeys.forEach((numkey) => {
     switch (numkey.innerHTML) {
       case "+":
@@ -49,7 +56,11 @@ function resizeNumkey() {
         numkey.style.gridColumn = "4 / span 1";
         break;
       default:
-        numpad.style.gridTemplateRows = `repeat(5, ${numkey.offsetWidth}px)`;
+        if (finished) {
+          numpad.style.gridTemplateRows = `repeat(2, ${numkeySize}px)`;
+        } else {
+          numpad.style.gridTemplateRows = `repeat(5, ${numkeySize}px)`;
+        }
         break;
     }
   });
@@ -67,8 +78,6 @@ const keyEquivalents = [
   ["*", "×"],
   ["/", "÷"],
 ];
-
-let lockedPad = true;
 
 async function fetchEquation() {
   const getEquationFile = await fetch(
@@ -114,8 +123,6 @@ async function main() {
     }
     return true;
   }
-
-  let finished = false;
 
   function updateUserAnswer(key) {
     const inputRowSquares = Array.from(
