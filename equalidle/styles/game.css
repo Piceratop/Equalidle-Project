@@ -128,13 +128,10 @@
   transform: rotateY(0deg);
 }
 
-#numpad-container {
-  width: var(--numpad-container-width);
-}
-
 #numpad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
   width: 100%;
   height: fit-content;
   padding: var(--extra-row-margin-top) 1rem;

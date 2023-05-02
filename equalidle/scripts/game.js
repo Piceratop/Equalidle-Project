@@ -49,7 +49,7 @@ function resizeNumkey() {
         numkey.style.gridColumn = "4 / span 1";
         break;
       default:
-        numkey.style.height = `${numkey.offsetWidth}px`;
+        numpad.style.gridTemplateRows = `repeat(5, ${numkey.offsetWidth}px)`;
         break;
     }
   });
