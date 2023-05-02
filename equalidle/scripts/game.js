@@ -48,6 +48,15 @@ function resizeNumkey() {
 resizeNumkey();
 window.addEventListener("resize", resizeNumkey);
 
+async function fetchEquation() {
+  const getEquationFile = await fetch(
+    `scripts/equation/${difficulty}Equations.txt`
+  );
+  const equationFile = await getEquationFile.text();
+  lockedPad = false;
+  return equationFile.split("\n");
+}
+
 // All valid characters
 
 const operators = ["+", "-", "*", "/"];
@@ -59,15 +68,6 @@ const keyEquivalents = [
   ["/", "÷"],
 ];
 
-async function fetchEquation() {
-  const getEquationFile = await fetch(
-    `scripts/equation/${difficulty}Equations.txt`
-  );
-  const equationFile = await getEquationFile.text();
-  lockedPad = false;
-  return equationFile.split("\n");
-}
-
 async function main() {
   // Set up problems
 
@@ -75,9 +75,9 @@ async function main() {
   let hiddenEquality =
     allValidEqualities[Math.floor(Math.random() * allValidEqualities.length)];
   for (let i = 0; i < keyEquivalents.length; i++) {
-    const charToReplace = keyEquivalents[i][0];
-    const replacementChar = keyEquivalents[i][1];
-    hiddenEquality = hiddenEquality.split(charToReplace).join(replacementChar);
+    hiddenEquality = hiddenEquality
+      .split(keyEquivalents[i][0])
+      .join(keyEquivalents[i][1]);
   }
 
   console.log(hiddenEquality);
@@ -88,9 +88,9 @@ async function main() {
 
   function checkValidAnswer(inputEquation) {
     for (let i = 0; i < keyEquivalents.length; i++) {
-      const charToReplace = keyEquivalents[i][1];
-      const replacementChar = keyEquivalents[i][0];
-      inputEquation = inputEquation.split(charToReplace).join(replacementChar);
+      inputEquation = inputEquation
+        .split(keyEquivalents[i][1])
+        .join(keyEquivalents[i][0]);
     }
     if (!inputEquation.includes("=")) {
       return false;
