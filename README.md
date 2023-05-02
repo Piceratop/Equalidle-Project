@@ -6,21 +6,25 @@ This project aims to develop games that enhance the mathematical skills of the p
 
 ## Contributing
 
-We welcome contributions to this project! To contribute, please follow these steps:
+You can contribute to this project with your skills in coding or designing.
 
-1. Fork the repository
-2. Create a new branch for your changes
-3. Make your changes and commit them with clear commit messages
-4. Push your changes to your branch
-5. Open a pull request
-
-### Prerequisites
+### Coders
 
 This project involves developing web-based games that test and improve the math skills of the players. To participate in this project, you will need to have some math skills and web programming skills.
 
 - Math skills are necessary for designing and implementing the game logic and difficulty levels.
 - Web programming skills are needed for creating the user interface and the game mechanics using HTML, CSS and JavaScript.
 - You are encouraged to use web frameworks and libraries to make the games more engaging and interactive.
+
+### Designers
+
+This project may not seem very demanding in terms of design, but it requires skills and knowledge that you have to know. Some of these are:
+
+- How to create and edit graphics using different tools and software,
+- How to design icons that look good, match the style and convey the meaning,
+- How to apply the UI (user interface) design principles, such as how to arrange the elements, choose the colors, fonts and navigation,
+- How to apply the UX (user experience) design principles, such as how to make the product easy to use, accessible, responsive and engaging,
+- How to collaborate and communicate effectively with the developers and clients who are involved in the project.
 
 ## License
 
