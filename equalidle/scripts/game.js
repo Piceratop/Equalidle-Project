@@ -4,7 +4,7 @@ const root = document.documentElement;
 const gridContainer = document.getElementById("grid-container");
 const flipDelayTime = 0.75;
 root.style.setProperty("--flip-delay", `${flipDelayTime}s`);
-const difficulty = localStorage.getItem("difficulty");
+const difficulty = localStorage.getItem("difficulty") ?? 5;
 let lockedPad = true;
 let finished = false;
 
@@ -41,24 +41,9 @@ const numpad = document.getElementById("numpad");
 const numkeys = numpad.querySelectorAll(".numkey");
 
 function resizeNumkey() {
-  let numkeySize = numkeys[0].offsetWidth;
-  numkeys.forEach((numkey) => {
-    switch (numkey.innerHTML) {
-      case "+":
-        numkey.style.gridRow = "2 / span 2";
-        numkey.style.gridColumn = "4 / span 1";
-        break;
-      case "Enter":
-        numkey.style.gridRow = "4 / span 2";
-        numkey.style.gridColumn = "4 / span 1";
-        break;
-      default:
-        if (!finished) {
-          numpad.style.gridTemplateRows = `repeat(5, ${numkeySize}px)`;
-        }
-        break;
-    }
-  });
+  if (!finished) {
+    numpad.style.gridTemplateRows = `repeat(5, ${numkeys[0].offsetWidth}px)`;
+  }
 }
 resizeNumkey();
 window.addEventListener("resize", resizeNumkey);
