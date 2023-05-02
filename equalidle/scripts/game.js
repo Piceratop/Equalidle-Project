@@ -42,9 +42,6 @@ const numkeys = numpad.querySelectorAll(".numkey");
 
 function resizeNumkey() {
   let numkeySize = numkeys[0].offsetWidth;
-  if (finished) {
-    numkeySize = numkeySize / 4;
-  }
   numkeys.forEach((numkey) => {
     switch (numkey.innerHTML) {
       case "+":
@@ -56,9 +53,7 @@ function resizeNumkey() {
         numkey.style.gridColumn = "4 / span 1";
         break;
       default:
-        if (finished) {
-          numpad.style.gridTemplateRows = `repeat(2, ${numkeySize}px)`;
-        } else {
+        if (!finished) {
           numpad.style.gridTemplateRows = `repeat(5, ${numkeySize}px)`;
         }
         break;
