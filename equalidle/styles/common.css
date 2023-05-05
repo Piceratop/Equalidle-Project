@@ -2,13 +2,13 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
 html {
   background-color: black;
   color: white;
   font-size: 6vw;
-  font-family: "Open Sans", sans-serif;
 }
 
 header {
