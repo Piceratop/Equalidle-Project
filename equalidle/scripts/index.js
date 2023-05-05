@@ -1,10 +1,7 @@
 const difficultyValue = document.getElementById("difficulty-value");
 const difficultySlider = document.getElementById("difficulty-slider");
-
-difficultyValue.innerHTML = `Number of Characters: ${
-  localStorage.getItem("difficulty") ?? 5
-}`;
-localStorage.removeItem("difficulty");
+difficultyValue.innerHTML = `Number of Characters: ${difficultySlider.value}`;
+console.log(difficultySlider.value);
 difficultySlider.addEventListener("input", () => {
   difficultyValue.innerHTML = `Number of Characters: ${difficultySlider.value}`;
 });
