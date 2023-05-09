@@ -22,21 +22,19 @@ const Numpad = () => {
   }, [modelButtonRef, window.innerWidth]);
 
   const buttonLabels = [
-    "Del",
     "÷",
     "×",
     "−",
+    "+",
     "100",
     "50",
     "25",
-    "+",
+    "Enter",
     "2",
     "3",
     "5",
-    "Enter",
-    "0",
-    ")",
-    "(",
+    "Backspace",
+    "♼",
   ];
 
   const buttons = buttonLabels.map((label, index) => (

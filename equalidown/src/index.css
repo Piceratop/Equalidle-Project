@@ -18,6 +18,24 @@ html {
   text-align: center;
 }
 
+.current-equation-container {
+  height: calc(25vw + 1rem);
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.current-equation-symbol {
+  max-width: 25vw;
+  border: 3px solid white;
+  margin-right: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+
 .numpad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -31,8 +49,13 @@ html {
   border: 3px solid white;
 }
 
-.numpad-button:nth-child(12) {
+.numpad-button:nth-child(8) {
   font-size: 0.75rem;
   grid-column: 4 / span 1;
-  grid-row: 3 / span 2;
+  grid-row: 2 / span 3;
+}
+
+.numpad-button:nth-child(12) {
+  font-size: 0.75rem;
+  grid-column: 1 / span 2;
 }
