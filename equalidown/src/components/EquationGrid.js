@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { equalidownContext } from "../contexts/equalidown";
 
 const EquationGrid = () => {
@@ -10,10 +10,8 @@ const EquationGrid = () => {
       recalculateFontSize(symbol);
     });
 
-    // Add event listener to window object
     window.addEventListener("resize", handleResize);
 
-    // Cleanup function to remove event listener
     return () => window.removeEventListener("resize", handleResize);
   }, [equalidownState.equationState]);
 
