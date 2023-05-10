@@ -1,8 +1,39 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { equalidownContext } from "../contexts/equalidown";
 
 const EquationGrid = () => {
   const [equalidownState, dispatch] = useContext(equalidownContext);
+
+  useEffect(() => {
+    const symbols = document.querySelectorAll(".current-equation-symbol");
+    symbols.forEach((symbol) => {
+      recalculateFontSize(symbol);
+    });
+
+    // Add event listener to window object
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function to remove event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, [equalidownState.equationState]);
+
+  const handleResize = () => {
+    const symbols = document.querySelectorAll(".current-equation-symbol");
+    symbols.forEach((symbol) => {
+      recalculateFontSize(symbol);
+    });
+  };
+
+  const recalculateFontSize = (el) => {
+    if (el) {
+      const maxWidth = el.offsetWidth;
+      const fontSize = maxWidth / el.innerText.length;
+      const maxFontSize = "10vw";
+      el.style.fontSize = `min(${fontSize}px, ${maxFontSize})`;
+      el.style.height = `${el.offsetWidth}px`;
+    }
+  };
+
   return (
     <div>
       <div className="target-number">{equalidownState["targetNumber"]}</div>
@@ -20,17 +51,6 @@ const EquationGrid = () => {
                 marginRight: `${
                   index === equalidownState.equationState.length - 1 ? 0 : 1
                 }vw`,
-              }}
-              ref={(el) => {
-                if (el) {
-                  const fontSize = parseFloat(
-                    window.getComputedStyle(el).fontSize
-                  );
-                  const maxWidth = el.offsetWidth;
-                  const maxFontSize = maxWidth / symbol.length;
-                  el.style.fontSize = `${Math.min(fontSize, maxFontSize)}px`;
-                  el.style.height = `${el.offsetWidth}px`;
-                }
               }}
             >
               {symbol}
