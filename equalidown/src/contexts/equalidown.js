@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 export const equalidownContext = createContext();
 
 const initialState = {
+  currentPage: "Menu",
   targetNumber: 901,
   equationState: [],
 };
