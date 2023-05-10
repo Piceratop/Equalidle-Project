@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  console.log(state);
   switch (action.type) {
     case "NUMPAD_BUTTON_CLICK":
       switch (action.key) {
@@ -23,7 +22,29 @@ const reducer = (state, action) => {
             equationState: [],
           };
         case "Enter":
-          return state;
+          try {
+            function evaluateExpression(expression) {
+              expression = expression.replace(/÷/g, "/");
+              expression = expression.replace(/×/g, "*");
+              expression = expression.replace(/−/g, "-");
+              expression = expression.replace(/\+/g, "+");
+              const result = eval(expression);
+              if (parseInt(result) == result) {
+                return parseInt(result);
+              } else {
+                throw new Error("Result is not an integer");
+              }
+            }
+            const equationResult = evaluateExpression(
+              state.equationState.join("")
+            );
+            return {
+              ...state,
+              equationState: [equationResult.toString()],
+            };
+          } catch (error) {
+            return state;
+          }
         default:
           return {
             ...state,
@@ -31,9 +52,9 @@ const reducer = (state, action) => {
           };
       }
     default:
+      return state;
       break;
   }
-  return state;
 };
 
 export const EqualidownProvider = ({ children }) => {
