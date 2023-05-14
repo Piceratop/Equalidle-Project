@@ -4,7 +4,7 @@ import { equalidownContext } from "../contexts/equalidown";
 const Numpad = () => {
   const [equalidownState, dispatch] = useContext(equalidownContext);
   const modelButtonRef = useRef(null);
-  const [buttonWidth, setButtonWidth] = useState(0);
+  const [buttonWidth, setButtonWidth] = useState("10vw");
 
   useEffect(() => {
     const updateButtonWidth = () => {
@@ -19,20 +19,16 @@ const Numpad = () => {
     return () => {
       window.removeEventListener("resize", updateButtonWidth);
     };
-  }, [modelButtonRef, window.innerWidth]);
+  }, [modelButtonRef, equalidownState.numpadNumber]);
 
   const buttonLabels = [
     "÷",
     "×",
     "−",
     "+",
-    "100",
-    "50",
-    "25",
+    ...equalidownState.numpadNumber.slice(0, 3),
     "Enter",
-    "2",
-    "3",
-    "5",
+    ...equalidownState.numpadNumber.slice(3, 6),
     "0",
     "(",
     ")",
@@ -43,9 +39,9 @@ const Numpad = () => {
   const buttons = buttonLabels.map((label, index) => (
     <button
       key={index}
+      className="numpad-button"
       ref={index === 0 ? modelButtonRef : null}
       style={{ height: label === "Enter" ? "auto" : buttonWidth }}
-      className="numpad-button"
       onClick={() => dispatch({ type: "NUMPAD_BUTTON_CLICK", key: label })}
     >
       {label}

@@ -3,8 +3,8 @@ import { createContext, useReducer } from "react";
 export const equalidownContext = createContext();
 
 const initialState = {
-  currentPage: "Menu",
-  targetNumber: 901,
+  targetNumber: "",
+  numpadNumber: [],
   equationState: [],
 };
 
@@ -52,9 +52,14 @@ const reducer = (state, action) => {
             equationState: [...state.equationState, action.key],
           };
       }
+    case "SET_NUMPAD_NUMBER":
+      return {
+        ...state,
+        numpadNumber: action.payload,
+        targetNumber: 901,
+      };
     default:
       return state;
-      break;
   }
 };
 

@@ -12,6 +12,34 @@ html {
   font-size: 10vw;
 }
 
+header {
+  text-align: center;
+  border-bottom: 3px solid white;
+}
+
+/* Styling for menu */
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.menu-link {
+  display: block;
+  width: 70%;
+  background-color: black;
+  color: white;
+  border: 3px solid white;
+  font-size: 0.7rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Styling for games */
+
 .target-number {
   width: 100%;
   padding: 0.5rem 0;
