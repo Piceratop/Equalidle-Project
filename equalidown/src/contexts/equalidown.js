@@ -57,8 +57,10 @@ const reducer = (state, action) => {
         return {
           ...state,
           numpadNumber: action.payload,
+          targetNumber: "Loading",
         };
       }
+      break;
     case "SET_TARGET_NUMBER":
       if (action.payload) {
         return {
@@ -66,6 +68,7 @@ const reducer = (state, action) => {
           targetNumber: action.payload,
         };
       }
+      break;
     default:
       return state;
   }

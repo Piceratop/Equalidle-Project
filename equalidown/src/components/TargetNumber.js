@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { equalidownContext } from "../contexts/equalidown";
 
 async function returnTargetNumber(numberArr) {
@@ -112,19 +112,26 @@ async function returnTargetNumber(numberArr) {
 
 export default function TargetNumber() {
   const [equalidownState, dispatch] = useContext(equalidownContext);
+  const [targetNumber, setTargetNumber] = useState("Loading");
 
   useEffect(() => {
     async function main() {
       const targetNumber = await returnTargetNumber(
         equalidownState.numpadNumber
       );
-      dispatch({
-        type: "SET_TARGET_NUMBER",
-        payload: targetNumber,
-      });
+      if (targetNumber) {
+        setTargetNumber(targetNumber);
+      }
     }
     main();
   }, [equalidownState.numpadNumber]);
+
+  useEffect(() => {
+    dispatch({
+      type: "SET_TARGET_NUMBER",
+      payload: targetNumber,
+    });
+  }, [targetNumber]);
 
   return <div className="target-number">{equalidownState.targetNumber}</div>;
 }
