@@ -21,10 +21,10 @@ const Game = () => {
       { length: 4 },
       () => Math.floor(Math.random() * 9) + 1
     );
-
+    const numpad = [...chosenBigNumbers, ...smallNumbers].sort((a, b) => b - a);
     dispatch({
       type: "SET_NUMPAD_NUMBER",
-      payload: [...chosenBigNumbers, ...smallNumbers].sort((a, b) => b - a),
+      payload: numpad,
     });
   }, []);
 

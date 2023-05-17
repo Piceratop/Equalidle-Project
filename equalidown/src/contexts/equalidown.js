@@ -56,7 +56,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         numpadNumber: action.payload,
-        targetNumber: 901,
       };
     default:
       return state;
