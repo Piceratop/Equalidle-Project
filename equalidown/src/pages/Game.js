@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import TargetNumber from "../components/TargetNumber";
 import EquationGrid from "../components/EquationGrid";
 import Numpad from "../components/Numpad";
@@ -6,6 +6,8 @@ import { equalidownContext } from "../contexts/equalidown";
 
 const Game = () => {
   const [equalidownState, dispatch] = useContext(equalidownContext);
+
+  const [inputField, setInputField] = useState("");
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -29,11 +31,21 @@ const Game = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (equalidownState.targetNumber !== "Loading") {
+      setInputField(
+        <>
+          <EquationGrid />
+          <Numpad />
+        </>
+      );
+    }
+  }, [equalidownState.targetNumber]);
+
   return (
     <main>
       <TargetNumber />
-      <EquationGrid />
-      <Numpad />
+      {inputField}
     </main>
   );
 };

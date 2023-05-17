@@ -3,7 +3,7 @@ import { createContext, useReducer } from "react";
 export const equalidownContext = createContext();
 
 const initialState = {
-  targetNumber: "",
+  targetNumber: "Loading",
   numpadNumber: [],
   equationState: [],
 };
@@ -53,10 +53,19 @@ const reducer = (state, action) => {
           };
       }
     case "SET_NUMPAD_NUMBER":
-      return {
-        ...state,
-        numpadNumber: action.payload,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          numpadNumber: action.payload,
+        };
+      }
+    case "SET_TARGET_NUMBER":
+      if (action.payload) {
+        return {
+          ...state,
+          targetNumber: action.payload,
+        };
+      }
     default:
       return state;
   }
