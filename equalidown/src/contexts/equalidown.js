@@ -5,21 +5,24 @@ export const equalidownContext = createContext();
 const initialState = {
   targetNumber: "Loading",
   numpadNumber: [],
+  buttonState: [],
   equationState: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "NUMPAD_BUTTON_CLICK":
-      switch (action.key) {
+      switch (action.key[0]) {
         case "Backspace":
           return {
             ...state,
+            buttonState: state.equationState.slice(0, -1),
             equationState: state.equationState.slice(0, -1),
           };
         case "♼":
           return {
             ...state,
+            buttonState: [],
             equationState: [],
           };
         case "Enter":
@@ -47,9 +50,11 @@ const reducer = (state, action) => {
             return state;
           }
         default:
+          console.log(action.key);
           return {
             ...state,
-            equationState: [...state.equationState, action.key],
+            buttonState: [...state.buttonState, action.key[1]],
+            equationState: [...state.equationState, action.key[0]],
           };
       }
     case "SET_NUMPAD_NUMBER":

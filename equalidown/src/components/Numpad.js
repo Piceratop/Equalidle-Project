@@ -42,7 +42,9 @@ const Numpad = () => {
       className="numpad-button"
       ref={index === 0 ? modelButtonRef : null}
       style={{ height: label === "Enter" ? "auto" : buttonWidth }}
-      onClick={() => dispatch({ type: "NUMPAD_BUTTON_CLICK", key: label })}
+      onClick={() =>
+        dispatch({ type: "NUMPAD_BUTTON_CLICK", key: [label, index] })
+      }
     >
       {label}
     </button>
