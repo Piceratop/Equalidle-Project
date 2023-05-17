@@ -34,7 +34,6 @@ const EquationGrid = () => {
 
   return (
     <div>
-      <div className="target-number">{equalidownState.targetNumber}</div>
       <div className="current-equation-container">
         {equalidownState.equationState.length > 0 ? (
           equalidownState.equationState.map((symbol, index) => (

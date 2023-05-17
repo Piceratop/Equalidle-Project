@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import TargetNumber from "../components/TargetNumber";
 import EquationGrid from "../components/EquationGrid";
 import Numpad from "../components/Numpad";
 import { equalidownContext } from "../contexts/equalidown";
@@ -30,6 +31,7 @@ const Game = () => {
 
   return (
     <main>
+      <TargetNumber />
       <EquationGrid />
       <Numpad />
     </main>
