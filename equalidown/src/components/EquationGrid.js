@@ -55,7 +55,7 @@ const EquationGrid = () => {
           ))
         ) : (
           <div
-            className="current-equation-symbol"
+            className="current-equation-symbol flip-in"
             style={{ width: "25vw", height: "25vw" }}
           ></div>
         )}

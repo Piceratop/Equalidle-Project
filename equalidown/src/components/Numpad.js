@@ -36,19 +36,29 @@ const Numpad = () => {
     "♼",
   ];
 
-  const buttons = buttonLabels.map((label, index) => (
-    <button
-      key={index}
-      className="numpad-button"
-      ref={index === 0 ? modelButtonRef : null}
-      style={{ height: label === "Enter" ? "auto" : buttonWidth }}
-      onClick={() =>
-        dispatch({ type: "NUMPAD_BUTTON_CLICK", key: [label, index] })
-      }
-    >
-      {label}
-    </button>
-  ));
+  const buttons = buttonLabels.map((label, index) => {
+    const isDisabled =
+      equalidownState.buttonState.includes(index) &&
+      equalidownState.numpadNumber.includes(label);
+    const buttonClassNames = isDisabled
+      ? "numpad-button numpad-disabled"
+      : "numpad-button";
+
+    return (
+      <button
+        key={index}
+        className={buttonClassNames}
+        ref={index === 0 ? modelButtonRef : null}
+        style={{ height: label === "Enter" ? "auto" : buttonWidth }}
+        onClick={() =>
+          dispatch({ type: "NUMPAD_BUTTON_CLICK", key: [label, index] })
+        }
+        disabled={isDisabled}
+      >
+        {label}
+      </button>
+    );
+  });
 
   return <div className="numpad">{buttons}</div>;
 };

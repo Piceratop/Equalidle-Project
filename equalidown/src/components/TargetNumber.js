@@ -133,5 +133,7 @@ export default function TargetNumber() {
     });
   }, [targetNumber]);
 
-  return <div className="target-number">{equalidownState.targetNumber}</div>;
+  return (
+    <div className="target-number flip-in">{equalidownState.targetNumber}</div>
+  );
 }

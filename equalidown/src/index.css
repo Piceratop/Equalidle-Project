@@ -46,6 +46,23 @@ header {
   border: 3px solid white;
   font-size: 2rem;
   text-align: center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease-out;
+}
+
+.flip-in {
+  animation: flip-in 0.5s ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes flip-in {
+  0% {
+    transform: rotateY(-90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
 }
 
 .current-equation-container {
@@ -88,4 +105,8 @@ header {
 .numpad-button:nth-child(15) {
   font-size: 0.75rem;
   grid-column: 1 / span 2;
+}
+
+.numpad-disabled {
+  opacity: 0.25;
 }

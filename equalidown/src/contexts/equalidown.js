@@ -14,11 +14,20 @@ const reducer = (state, action) => {
     case "NUMPAD_BUTTON_CLICK":
       switch (action.key[0]) {
         case "Backspace":
-          return {
-            ...state,
-            buttonState: state.equationState.slice(0, -1),
-            equationState: state.equationState.slice(0, -1),
-          };
+          if (state.equationState.length > 1) {
+            return {
+              ...state,
+              buttonState: state.buttonState.slice(0, -1),
+              equationState: state.equationState.slice(0, -1),
+            };
+          } else {
+            return {
+              ...state,
+              buttonState: [],
+              equationState: [],
+            };
+          }
+
         case "♼":
           return {
             ...state,
@@ -50,7 +59,6 @@ const reducer = (state, action) => {
             return state;
           }
         default:
-          console.log(action.key);
           return {
             ...state,
             buttonState: [...state.buttonState, action.key[1]],
