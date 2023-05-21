@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 export const equalidownContext = createContext();
 
 const initialState = {
+  gameState: "playing",
   targetNumber: "Loading",
   numpadNumber: [],
   buttonState: [],
@@ -42,8 +43,8 @@ const reducer = (state, action) => {
               expression = expression.replace(/−/g, "-");
               expression = expression.replace(/\+/g, "+");
               const result = eval(expression);
-              if (parseInt(result) == result) {
-                return parseInt(result);
+              if (parseInt(result) === result) {
+                return result;
               } else {
                 throw new Error("Result is not an integer");
               }
@@ -51,8 +52,13 @@ const reducer = (state, action) => {
             const equationResult = evaluateExpression(
               state.equationState.join("")
             );
+            const gameResult =
+              equationResult === state.targetNumber
+                ? "solved"
+                : state.gameState;
             return {
               ...state,
+              gameState: gameResult,
               equationState: [equationResult.toString()],
             };
           } catch (error) {

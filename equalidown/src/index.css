@@ -17,6 +17,12 @@ header {
   border-bottom: 3px solid white;
 }
 
+@media screen and (max-width: 600px) {
+  .hidden-header {
+    display: none;
+  }
+}
+
 /* Styling for menu */
 
 .menu-container {
@@ -107,6 +113,32 @@ header {
   grid-column: 1 / span 2;
 }
 
+.numpad-active {
+  opacity: 1;
+  animation: numpad-active-animation 0.5s ease-in-out forwards;
+}
+
+@keyframes numpad-active-animation {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .numpad-disabled {
   opacity: 0.25;
+  animation: numpad-disabled-animation 0.5s ease-in-out forwards;
+}
+
+@keyframes numpad-disabled-animation {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.25;
+  }
 }

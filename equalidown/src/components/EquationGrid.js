@@ -38,7 +38,7 @@ const EquationGrid = () => {
         {equalidownState.equationState.length > 0 ? (
           equalidownState.equationState.map((symbol, index) => (
             <div
-              className="current-equation-symbol"
+              className="current-equation-symbol flip-in"
               key={index}
               style={{
                 width: `calc((100% - ${
@@ -55,8 +55,8 @@ const EquationGrid = () => {
           ))
         ) : (
           <div
-            className="current-equation-symbol flip-in"
-            style={{ width: "25vw", height: "25vw" }}
+            className="current-equation-symbol"
+            style={{ width: "25vw", height: "25vw", opacity: "0" }}
           ></div>
         )}
       </div>

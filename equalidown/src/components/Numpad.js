@@ -36,13 +36,15 @@ const Numpad = () => {
     "♼",
   ];
 
+  const gameCompletedButtonLabels = ["Congratulations!", "Restart", "Menu"];
+
   const buttons = buttonLabels.map((label, index) => {
     const isDisabled =
       equalidownState.buttonState.includes(index) &&
       equalidownState.numpadNumber.includes(label);
-    const buttonClassNames = isDisabled
-      ? "numpad-button numpad-disabled"
-      : "numpad-button";
+    const buttonClassNames = `numpad-button ${
+      isDisabled ? "numpad-disabled" : "numpad-active"
+    }`;
 
     return (
       <button
