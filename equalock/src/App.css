@@ -15,7 +15,7 @@ html {
 
 header {
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   border-bottom: 5px solid white;
   display: flex;
   justify-content: space-between;
@@ -23,7 +23,7 @@ header {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5gamerem;
   text-align: center;
   letter-spacing: 3px;
 }
@@ -51,12 +51,55 @@ h1 {
   text-decoration: none;
 }
 
+.game {
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .game-grid {
   width: fit-content;
   height: auto;
   padding: 1px;
+  margin: auto;
   border: 5px solid white;
   position: relative;
   display: grid;
   gap: 0;
+}
+
+.game-cell-animation {
+  animation: cell-appear 1s ease-in-out;
+}
+
+@keyframes cell-appear {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.piece-control {
+  height: fit-content;
+  margin: auto auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+}
+
+.arrow-control {
+  --unit: min(10vh, 10vw);
+
+  width: var(--unit);
+  height: var(--unit);
+  border: 5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
 }
