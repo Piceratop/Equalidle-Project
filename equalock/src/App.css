@@ -60,7 +60,6 @@ h1 {
 .game-grid {
   width: fit-content;
   height: auto;
-  padding: 1px;
   margin: auto;
   border: 5px solid white;
   position: relative;
