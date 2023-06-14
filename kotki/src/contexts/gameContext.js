@@ -4,9 +4,14 @@ export const GameContext = createContext();
 
 const initialState = {
   grid: [
-    [0, 1, 0, 0],
-    [0, 2, 3, 0],
-    [0, 2, 0, 0],
+    [0, 1, 0, 3],
+    [4, 2, 3, 3],
+    [4, 2, 0, 0],
+  ],
+  targetGrid: [
+    [0, 0, 0, 0],
+    [0, 0, 0, 1],
+    [0, 0, 0, 0],
   ],
   currentPiece: 1,
   gridRendered: false,
