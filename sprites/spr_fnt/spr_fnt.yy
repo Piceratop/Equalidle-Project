@@ -89,8 +89,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Font",
+    "path":"folders/Sprites/Font.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
