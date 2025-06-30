@@ -1,0 +1,1 @@
+global.fnt_tile = font_add_sprite_ext(spr_fnt_tile, " 0123456789()+−×÷.-=★", true, 0);

@@ -37,9 +37,10 @@
   "name":"Mathzzle",
   "resources":[
     {"id":{"name":"obj_board_controller","path":"objects/obj_board_controller/obj_board_controller.yy",},},
-    {"id":{"name":"obj_camera_board","path":"objects/obj_camera_board/obj_camera_board.yy",},},
+    {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"rm_play","path":"rooms/rm_play/rm_play.yy",},},
     {"id":{"name":"scr_board","path":"scripts/scr_board/scr_board.yy",},},
+    {"id":{"name":"spr_cell","path":"sprites/spr_cell/spr_cell.yy",},},
     {"id":{"name":"spr_fnt_tile","path":"sprites/spr_fnt_tile/spr_fnt_tile.yy",},},
     {"id":{"name":"spr_fnt","path":"sprites/spr_fnt/spr_fnt.yy",},},
   ],
