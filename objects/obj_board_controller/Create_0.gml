@@ -17,7 +17,16 @@ board_layout = [
    ["S", "S", "S2", "S", "S", "S", "S"],
    ["S", "S", "S", "S2", "S", "H", "S"],
    ["E2", "S", "S", "S", "S", "S", "E2"]
-]
+];
 
 flexpanel_board_layout = board_flexpanel_create(board_layout, square_width, square_height);
+var _data = flexpanel_node_get_data(
+   flexpanel_node_get_child(
+      flexpanel_node_get_child(flexpanel_board_layout, 3),
+      3
+   )
+);
 
+
+
+_data.tile = "0";

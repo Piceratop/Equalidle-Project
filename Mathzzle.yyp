@@ -43,6 +43,7 @@
     {"id":{"name":"spr_cell","path":"sprites/spr_cell/spr_cell.yy",},},
     {"id":{"name":"spr_fnt_tile","path":"sprites/spr_fnt_tile/spr_fnt_tile.yy",},},
     {"id":{"name":"spr_fnt","path":"sprites/spr_fnt/spr_fnt.yy",},},
+    {"id":{"name":"spr_tile","path":"sprites/spr_tile/spr_tile.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
