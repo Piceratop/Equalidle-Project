@@ -90,29 +90,7 @@ function draw_board_from_flexpanel(_flex) {
             );
          } else {
             // Case where a tile has been played on the cell
-            draw_sprite_ext(
-               spr_tile, 0, _pos.left, _pos.top,
-               _pos.width / sprite_get_width(spr_tile), _pos.height / sprite_get_height(spr_tile),
-               0, c_white, 1
-            );
-            
-            var _store_halign = draw_get_halign();
-            var _store_font = draw_get_font();
-            draw_set_halign(fa_center);
-            draw_set_font(global.fnt_tile);
-            draw_text(_pos.left + _pos.width / 2, _pos.top - 8, _data.tile);
-            
-            draw_set_font(global.fnt_text);
-            draw_text(
-               _pos.left + _pos.width - 20,
-               _pos.top + _pos.height - string_height("0") - 8,
-               string(
-                  struct_get(global.tile_score_dictionary, "ts" + _data.tile)
-               )
-            );
-            
-            draw_set_font(_store_font);
-            draw_set_halign(_store_halign);
+            draw_number_tile(_pos.left, _pos.top, _data.tile, c_white);
          }
       }
    }
